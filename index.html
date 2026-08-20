@@ -844,14 +844,13 @@ footer{border-top:1px solid var(--linea);margin-top:56px;padding:26px 0 60px;
       behind them. Alongside both, the site ACT built for the brand in this market is open to be
       looked at.</p>
 
-    <!-- Las rutas salen de la carpeta: el business case vive en «Business case»,
-         que es hermana de «Dossier». El %20 es el espacio del nombre de la
-         carpeta codificado. Funciona, pero es fragil: si algun dia esto se
-         publica, conviene renombrar la carpeta a business-case sin espacio. -->
+    <!-- Rutas hacia abajo, nunca hacia arriba. Esta carpeta es la raiz del sitio
+         publicado, asi que un ../ se sale del repositorio y da 404, que es
+         exactamente lo que paso. El business case cuelga de aqui. -->
     <div class="anexos">
-      <a class="solido" href="../Business%20case/index.html">The business case <span class="n">NPV · IRR · break-even</span></a>
+      <a class="solido" href="business-case/index.html">The business case <span class="n">NPV · IRR · break-even</span></a>
       <a href="act.html">ACT in detail <span class="n">STRUCTURE · TEAMS · SERVICE</span></a>
-      <a href="../Business%20case/ACT-MicroAire-Business-Case.pdf" download>Business case as PDF <span class="n">8 PAGES</span></a>
+      <a href="business-case/ACT-MicroAire-Business-Case.pdf" download>Business case as PDF <span class="n">8 PAGES</span></a>
       <a href="https://microairecolombia.com" target="_blank" rel="noopener">microairecolombia.com
         <span class="n">THE BRAND'S HOME IN COLOMBIA</span></a>
     </div>
