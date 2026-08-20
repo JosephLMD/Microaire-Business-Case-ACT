@@ -3,595 +3,889 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Business case · MicroAire's return on the four requests · ACT Soluciones Médicas</title>
-<meta name="description" content="Financial business case for MicroAire: options analysis, NPV, IRR, payback, benefit-cost ratio, break-even, risks and implementation for the Colombian distribution proposal.">
+<title>ACT Soluciones Médicas · MicroAire Colombia · Distribution proposal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ACT Soluciones Médicas · MicroAire Colombia · distribution proposal.
+   Serif for running text: it reads better at length and carries more weight
+   than a sans in a document meant to be printed and re-read. */
 :root{
-  --tinta:#161C18; --papel:#EFF1E6; --carta:#FFFFFF; --gris:#5C665C;
-  --linea:#DCE0D0; --oliva:#4A5F35; --oliva-l:#E7ECDB; --oliva-c:#6E8A4E;
-  --azul:#24455F; --azul-l:#E4EBF1; --rojo:#9C2233; --rojo-l:#F8ECEE;
+  --tinta:#101820; --papel:#FFFFFF; --gris:#5B6672; --linea:#E4E8EC;
+  --azul:#0072CE; --azul-d:#00538F; --azul-l:#EFF6FD;
+  --oro:#B0821A; --verde:#1B6B47;
+  --sombra:0 1px 2px rgba(16,24,32,.04), 0 10px 30px rgba(16,24,32,.07);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:66px}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--tinta);
-  background:var(--papel);line-height:1.62;font-size:16px;
-  font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
-.wrap{max-width:920px;margin:0 auto;padding:0 26px}
+body{font-family:'Source Serif 4',Georgia,serif;color:var(--tinta);background:var(--papel);
+  line-height:1.68;font-size:18px;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+.sans{font-family:'Inter',system-ui,sans-serif}
 
-header.bar{position:sticky;top:0;z-index:50;background:var(--tinta);color:#fff}
-header.bar .in{max-width:920px;margin:0 auto;padding:11px 26px;display:flex;
-  align-items:center;gap:12px;font-size:12.5px}
-header.bar b{font-size:13.5px}
-header.bar span{color:#A3B39C}
-header.bar .r{margin-left:auto;color:#8B9C85;font-size:11.5px}
-@media(max-width:660px){header.bar .r{display:none}}
+/* ── barra ── */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+.bar{max-width:760px;margin:0 auto;padding:12px 24px;display:flex;align-items:baseline;gap:10px;
+  font-family:'Inter',sans-serif}
+.bar b{font-size:14px;letter-spacing:-.2px}
+.bar span{font-size:12px;color:var(--gris)}
+.bar .r{margin-left:auto;font-size:11.5px;color:var(--gris);letter-spacing:.3px}
+@media(max-width:600px){.bar .r{display:none}}
 
-.port{padding:48px 0 6px}
-/* El mismo wordmark que abre el dossier. Este documento va dirigido a
-   MicroAire y no llevaba nada de ellos encima: identifica al destinatario,
-   no al remitente. */
-.marca{display:block;width:126px;height:auto;margin-bottom:24px;opacity:.9}
-.port .k{font-size:11px;font-weight:700;letter-spacing:2.6px;text-transform:uppercase;
-  color:var(--oliva);margin-bottom:16px}
-.port h1{font-size:clamp(30px,5.4vw,47px);line-height:1.07;letter-spacing:-1.6px;
-  font-weight:700;margin-bottom:18px}
-.port .sub{font-size:19px;color:#3C4740;max-width:680px;margin-bottom:22px}
-.port .meta{font-size:12.5px;color:var(--gris);border-top:1px solid var(--linea);
-  padding-top:16px;line-height:1.75}
+/* ── portada ── */
+.port{padding:56px 0 10px}
+/* La palabra MicroAire va sola y pequena. Identifica a quien va dirigido el
+   documento, no a quien lo escribe. Sin fotos: el argumento es numerico y una
+   imagen de equipo solo competiria con el. */
+.marca{display:block;width:132px;height:auto;margin-bottom:26px;opacity:.92}
+.port .k{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:2.4px;
+  text-transform:uppercase;color:var(--azul-d);margin-bottom:20px}
+.port h1{font-size:clamp(34px,6vw,52px);line-height:1.08;letter-spacing:-1.4px;
+  font-weight:700;margin-bottom:22px}
+.port .sub{font-size:20px;color:#3D4753;line-height:1.55;margin-bottom:26px}
+.port .meta{font-family:'Inter',sans-serif;font-size:13px;color:var(--gris);line-height:1.7;
+  border-top:1px solid var(--linea);padding-top:18px}
 
-/* indice */
-.idx{background:var(--carta);border:1px solid var(--linea);border-radius:14px;
-  padding:22px 26px;margin:30px 0 4px}
-.idx h4{font-size:11px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;
-  color:var(--gris);margin-bottom:14px}
-.idx ol{list-style:none;counter-reset:i;font-size:14px;columns:2;column-gap:34px}
-.idx li{counter-increment:i;margin-bottom:8px;padding-left:30px;position:relative;
-  line-height:1.4;break-inside:avoid}
+/* ── texto ── */
+section{padding:44px 0 0;scroll-margin-top:66px}
+h2{font-size:clamp(25px,3.6vw,32px);line-height:1.2;letter-spacing:-.7px;font-weight:700;
+  margin-bottom:14px}
+h3{font-size:20px;font-weight:700;letter-spacing:-.3px;margin:30px 0 10px}
+p{margin-bottom:16px}
+.lead{font-size:20px;color:#39424E;line-height:1.6;margin-bottom:20px}
+.num{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--azul-d);margin-bottom:10px}
+b,strong{font-weight:700}
+a{color:var(--azul-d)}
+
+/* ── índice ── */
+.idx{background:#FAFBFC;border:1px solid var(--linea);border-radius:14px;padding:24px 26px;
+  margin:34px 0 6px}
+.idx h4{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:1.8px;
+  text-transform:uppercase;color:var(--gris);margin-bottom:14px}
+.idx ol{list-style:none;counter-reset:i;font-family:'Inter',sans-serif;font-size:14.5px}
+.idx li{counter-increment:i;margin-bottom:9px;padding-left:32px;position:relative;line-height:1.45}
 .idx li::before{content:counter(i,decimal-leading-zero);position:absolute;left:0;top:1px;
-  font-size:11.5px;font-weight:700;color:var(--oliva-c)}
+  font-size:12px;font-weight:700;color:var(--azul)}
 .idx a{text-decoration:none;color:var(--tinta)}
-.idx a:hover{color:var(--oliva)}
-@media(max-width:620px){.idx ol{columns:1}}
+.idx a:hover{color:var(--azul-d)}
 
-section{padding:42px 0 0;scroll-margin-top:66px}
-.eti{font-size:11px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;
-  color:var(--oliva);margin-bottom:9px}
-h2{font-size:clamp(23px,3.2vw,30px);line-height:1.18;letter-spacing:-.8px;font-weight:700;
-  margin-bottom:12px}
-h3{font-size:17.5px;font-weight:700;margin:26px 0 8px;letter-spacing:-.2px}
-p{margin-bottom:14px;max-width:740px}
-.gris{color:var(--gris)}
-.chico{font-size:13.5px}
+/* ── cifras ── */
+.cifras{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+  background:var(--linea);border:1px solid var(--linea);border-radius:12px;overflow:hidden;
+  margin:24px 0}
+.cif{background:#fff;padding:20px 18px}
+.cif .n{font-family:'Inter',sans-serif;font-size:30px;font-weight:700;letter-spacing:-1.2px;
+  line-height:1;color:var(--azul-d)}
+.cif .l{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--gris);margin-top:8px;
+  line-height:1.4}
 
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px;margin:22px 0}
-.kpi{background:var(--carta);border:1px solid var(--linea);border-radius:12px;padding:18px}
-.kpi .n{font-size:29px;font-weight:700;letter-spacing:-1.3px;line-height:1;color:var(--oliva)}
-.kpi .l{font-size:12px;color:var(--gris);margin-top:8px;line-height:1.45}
-.kpi.az .n{color:var(--azul)}
-.kpi.neg .n{color:var(--rojo)}
+/* ── destacado ── */
+.dest{border-left:3px solid var(--azul);background:var(--azul-l);border-radius:0 12px 12px 0;
+  padding:20px 24px;margin:26px 0}
+.dest p:last-child{margin-bottom:0}
+.dest.oro{border-left-color:var(--oro);background:#FDF8EC}
+.dest.verde{border-left-color:var(--verde);background:#F0F7F3}
 
-.tbl{background:var(--carta);border:1px solid var(--linea);border-radius:12px;
-  overflow-x:auto;margin:20px 0}
-table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:560px}
-th{text-align:right;padding:11px 14px;font-size:10.5px;font-weight:700;letter-spacing:.9px;
-  text-transform:uppercase;color:var(--gris);border-bottom:1.5px solid var(--tinta);
-  white-space:nowrap}
-th:first-child{text-align:left}
-td{padding:10px 14px;border-bottom:1px solid var(--linea);text-align:right;white-space:nowrap}
-td:first-child{text-align:left;white-space:normal}
-td.libre{white-space:normal;text-align:left}
+/* ── tablas ── */
+.tabla{overflow-x:auto;margin:24px 0}
+table{width:100%;border-collapse:collapse;font-family:'Inter',sans-serif;font-size:14px;
+  min-width:480px}
+th{text-align:left;padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.8px;
+  text-transform:uppercase;color:var(--gris);border-bottom:1.5px solid var(--tinta)}
+td{padding:11px 14px;border-bottom:1px solid var(--linea);vertical-align:top;line-height:1.45}
 tr:last-child td{border-bottom:0}
-tr.tot td{border-top:1.5px solid var(--tinta);font-weight:700;background:#FAFBF6}
-tr.elegida td{background:var(--oliva-l)}
-td.neg{color:var(--rojo)} td.pos{color:var(--oliva)}
+td.n{font-weight:700;white-space:nowrap}
+.tot td{border-top:1.5px solid var(--tinta);border-bottom:0;font-weight:700}
 
-.caja{border-left:3px solid var(--oliva);background:var(--oliva-l);border-radius:0 12px 12px 0;
-  padding:18px 22px;margin:22px 0}
-.caja.azul{border-left-color:var(--azul);background:var(--azul-l)}
-.caja.rojo{border-left-color:var(--rojo);background:var(--rojo-l)}
-.caja p:last-child{margin-bottom:0}
-.caja h4{font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;
-  color:var(--oliva);margin-bottom:8px}
-.caja.azul h4{color:var(--azul)} .caja.rojo h4{color:var(--rojo)}
+/* ── listas ── */
+ul.lista{list-style:none;margin:0 0 18px}
+ul.lista li{padding-left:22px;position:relative;margin-bottom:11px;line-height:1.6}
+ul.lista li::before{content:'';position:absolute;left:2px;top:11px;width:6px;height:6px;
+  border-radius:50%;background:var(--azul)}
 
-.sup{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.4px;
-  color:var(--azul);background:var(--azul-l);border:1px solid #C6D4E0;
-  border-radius:4px;padding:1px 7px;white-space:nowrap}
+/* ── pasos ── */
+.pasos{counter-reset:p;margin:24px 0}
+.paso{counter-increment:p;display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--linea)}
+.paso:last-child{border-bottom:0}
+.paso::before{content:counter(p,decimal-leading-zero);font-family:'Inter',sans-serif;
+  font-size:13px;font-weight:700;color:var(--azul);flex:0 0 28px;padding-top:3px}
+.paso .t{font-weight:700;margin-bottom:3px}
+.paso .d{font-size:16px;color:var(--gris);line-height:1.5}
 
-ul.lst{list-style:none;margin:0 0 16px;max-width:740px}
-ul.lst li{padding-left:22px;position:relative;margin-bottom:10px;line-height:1.55}
-ul.lst li::before{content:'';position:absolute;left:2px;top:10px;width:6px;height:6px;
-  border-radius:50%;background:var(--oliva-c)}
+/* ── por confirmar ── */
+.pc{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.6px;
+  color:#8A6510;background:#FBF0D8;border-radius:4px;padding:1px 7px;white-space:nowrap}
 
-.hito{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--linea)}
-.hito:last-child{border-bottom:0}
-.hito .c{flex:0 0 92px;font-size:12px;font-weight:700;color:var(--oliva);padding-top:2px;
-  letter-spacing:.4px}
-.hito .t{font-weight:600;margin-bottom:2px}
-.hito .d{font-size:14px;color:var(--gris);line-height:1.5}
-
-.volver{font-size:13px;margin:0 0 4px}
-.volver a{color:var(--oliva);text-decoration:none;border-bottom:1px solid #C9D6B4}
-.volver a.pdf{display:inline-block;background:var(--oliva);color:#fff;border:0;border-radius:7px;
-  padding:8px 16px;font-size:12.5px;font-weight:600;letter-spacing:.2px;margin:8px 0 2px}
-.volver a.pdf:hover{background:#3D4E2B}
-
-footer{border-top:1px solid var(--linea);margin-top:52px;padding:24px 0 60px;
-  font-size:12.5px;color:var(--gris);line-height:1.75}
-footer b{color:var(--tinta)}
-@media print{header.bar{position:static} section{page-break-inside:avoid} body{background:#fff}}
+.fuentes{border-top:1px solid var(--linea);padding-top:22px;margin-bottom:26px}
+.fuentes h5{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--azul-d);margin-bottom:12px}
+.fuentes ol{margin:0 0 14px 18px;padding:0}
+.fuentes li{font-size:13.5px;line-height:1.6;color:var(--gris);margin-bottom:8px}
+.fuentes a{color:var(--azul-d);text-decoration:none;border-bottom:1px solid var(--azul-l)}
+.fuentes a:hover{border-bottom-color:var(--azul)}
+.fuentes .nota{font-size:13px;color:var(--gris);font-style:italic}
+.firma{font-size:13.5px;color:var(--gris);line-height:1.7}
+footer{border-top:1px solid var(--linea);margin-top:56px;padding:26px 0 60px;
+  font-family:'Inter',sans-serif;font-size:13px;color:var(--gris);line-height:1.7}
+/* ── botones a los anexos ── */
+.anexos{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 6px;justify-content:center}
+.anexos a{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;
+  font-size:13.5px;font-weight:600;letter-spacing:.1px;text-decoration:none;
+  padding:11px 18px;border-radius:9px;border:1.5px solid var(--azul-d);color:var(--azul-d);
+  background:#fff;transition:background .15s,color .15s}
+.anexos a:hover{background:var(--azul-l)}
+.anexos a.solido{background:var(--azul-d);color:#fff;border-color:var(--azul-d)}
+.anexos a.solido:hover{background:#00406E}
+.anexos .n{font-size:11px;font-weight:700;opacity:.7;letter-spacing:.4px}
+/* Dentro de una seccion el boton va alineado con el texto, no centrado: ahi es
+   parte del parrafo que lo precede, no un cierre. */
+.anexos.izq{justify-content:flex-start;margin:22px 0 4px}
+@media print{.anexos{display:none}}
+@media print{header{position:static}section{page-break-inside:avoid}}
 </style>
 </head>
 <body>
 
-<header class="bar">
-  <div class="in"><b>Business case</b><span>· Financial annex</span>
-    <span class="r">ACT Soluciones Médicas · August 2026</span></div>
+<header>
+  <div class="bar">
+    <b>ACT Soluciones Médicas</b>
+    <span>· MicroAire Colombia</span>
+    <span class="r">Distribution proposal · August 2026</span>
+  </div>
 </header>
 
 <div class="wrap">
 
   <div class="port">
     <img class="marca" src="microaire-wordmark.png" alt="MicroAire" width="900" height="164">
-    <div class="k">Financial annex to the distribution proposal</div>
-    <h1>What the four requests<br>return to MicroAire.</h1>
-    <p class="sub">The proposal asks MicroAire for four things. This document answers the only
-      question that matters about them: what they cost, what they return, how quickly, what could
-      go wrong, and what happens if MicroAire does nothing instead. The subject of every
-      calculation here is MicroAire, not ACT.</p>
-    <div class="meta">
-      Prepared by <b>ACT Soluciones Médicas SAS</b>, Bogotá · For MicroAire Surgical Instruments,
-      A Marmon | Berkshire Hathaway Company<br>
-      Historical purchase figures are MicroAire's own. Every internal MicroAire cost is an
-      estimate, marked <span class="sup">assumption</span> and listed in full with its basis in
-      section 16.
-    </div>
+    <div class="k">Exclusive distribution · Colombia · PAL</div>
+    <h1>The channel already exists.<br>This is about what it becomes.</h1>
+    <p class="sub">You are not being asked to build a distributor in Colombia. You are being asked to
+      recognise the one you already have, and to give it four things it cannot obtain on its own.</p>
+    <p class="meta">Prepared by ACT Soluciones Médicas SAS · Bogotá, Colombia<br>
+      For the Vice President and the leadership team, MicroAire Surgical Instruments · August 2026</p>
   </div>
-
-  <p class="volver"><a class="pdf" href="ACT-MicroAire-Business-Case.pdf" download>Download this business case as PDF</a></p>
 
   <div class="idx">
     <h4>Contents</h4>
-    <ol><li><a href="#resumen">Executive summary</a></li><li><a href="#situacion">The situation</a></li><li><a href="#evidencia">The evidence</a></li><li><a href="#opciones">Options considered</a></li><li><a href="#modelo">The model</a></li><li><a href="#indicadores">Appraisal indicators</a></li><li><a href="#equilibrio">Break-even</a></li><li><a href="#act">What ACT puts in</a></li><li><a href="#base">The installed base</a></li><li><a href="#otros">Benefits beyond the financial</a></li><li><a href="#sensibilidad">Sensitivity</a></li><li><a href="#riesgos">Risks and mitigations</a></li><li><a href="#calendario">Implementation</a></li><li><a href="#gobierno">Reporting and governance</a></li><li><a href="#plazo">Term and performance</a></li><li><a href="#supuestos">Assumptions</a></li><li><a href="#decision">The decision requested</a></li></ol>
+    <ol>
+      <li><a href="#resumen">The proposal in one page</a></li>
+      <li><a href="#canal">Why the channel is already ours</a></li>
+      <li><a href="#servicio">Where the brand is losing customers: service</a></li>
+      <li><a href="#mercado">Why Colombia is the right country for PAL</a></li>
+      <li><a href="#competencia">The competitive position in Colombia today</a></li>
+      <li><a href="#ano">Why this year was flat, and what it tells us</a></li>
+      <li><a href="#pedidos">The four requests</a></li>
+      <li><a href="#numero">What we commit to, and what your support unlocks</a></li>
+      <li><a href="#unidades">How the growth actually gets sold</a></li>
+      <li><a href="#lanzamiento">SYNERGY and what 2027 requires</a></li>
+      <li><a href="#campo">What we have already built</a></li>
+      <li><a href="#portafolio">One distributor for the whole portfolio</a></li>
+      <li><a href="#decision">What we are asking you to decide</a></li>
+      <li><a href="#porque">Why the representation should sit with ACT</a></li>
+    </ol>
   </div>
 
-  <!-- 01 -->
+  <!-- ═══ 1 ═══ -->
   <section id="resumen">
-    <div class="eti">01 · Executive summary</div>
-    <h2>One page, before the arithmetic</h2>
-    <p>ACT asks MicroAire for a certified service station, 180-day payment terms, a structured
-      training programme, and speakers at the congresses ACT already builds and staffs. This
-      document prices that request from MicroAire's side.</p>
+    <div class="num">01 · Summary</div>
+    <h2>The proposal in one page</h2>
+    <p class="lead">We ask to be recognised as MicroAire's exclusive distributor in Colombia for the PAL line, and for four forms of support that
+      convert a flat market into a growing one.</p>
 
-    <div class="kpis">
-      <div class="kpi"><div class="n">183,104</div><div class="l">NPV to MicroAire at 10%, five years, USD</div></div>
-      <div class="kpi"><div class="n">70.0%</div><div class="l">internal rate of return</div></div>
-      <div class="kpi"><div class="n">2.2 yr</div><div class="l">payback on the initial outlay</div></div>
-      <div class="kpi az"><div class="n">19%</div><div class="l">growth needed to break even, against 48% delivered in 2025</div></div>
+    <p><b>What we ask for.</b> A certified service station in Colombia. Payment terms of 180
+      days, so that ACT can carry the credit its customers need. A structured surgeon training
+      programme based in Bogotá. Support for marketing and congress activity: speakers at the
+      meetings where ACT already builds and staffs the stand.</p>
+
+    <p><b>What we commit to.</b> <b>USD 526,000</b> in the coming year with none of the above. That is the floor, and it matches what was purchased last year. With the four requests in place,
+      <b>USD 604,900</b>, which is the floor plus 15%, then 13% in year two and 8% a year after that.</p>
+
+    <p><b>What it is worth to you.</b> Held across a five year agreement, the difference between
+      those two paths is approximately <b>USD 1.05 million</b> in incremental revenue to you. That figure, not our enthusiasm, is the argument.</p>
+
+    <div class="dest">
+      <p><b>The one sentence that matters.</b> Every surgeon relationship MicroAire has in
+        Colombia today runs through one person, and that person is the owner of ACT. This
+        proposal does not move the channel. It formalises where the channel already is.</p>
     </div>
 
-    <ul class="lst">
-      <li><b>The channel already grew 48% in one year</b> without any of the
-        four requests, from USD 352,451 to USD 522,500.</li>
-      <li><b>The support costs MicroAire about USD 60,384 a year</b> plus a one-off
-        USD 42,000 to certify the station, and returns
-        USD 632,997 of incremental gross profit over five years.</li>
-      <li><b>Break-even sits at USD 100,640 of additional annual purchases</b>, roughly
-        19% above the committed floor.</li>
-      <li><b>Doing nothing is not neutral.</b> The constraint that flattened 2026 is the cost of
-        money, and it does not resolve itself.</li>
-      <li><b>The case fails if growth runs at half the modelled rate.</b> That boundary is stated
-        in section 10 rather than hidden.</li>
+    <div class="dest oro">
+      <p><b>And the part that is easiest to underestimate from Charlottesville: in this market
+        trust is personal, and it is already ours.</b> A surgeon here does not buy a PAL system
+        from a catalogue. He buys it from someone who has stood beside him in theatre, who
+        answers the phone at ten at night, and who was there the last time something went wrong.
+        That is built one conversation at a time and it takes years.</p>
+      <p>This is what global brands mean by glocalisation, and it is the piece MicroAire has not
+        yet looked at closely in this market. Product travels. Trust does not, unless somebody
+        local carries it. Every request in this document is downstream of that one fact.</p>
+    </div>
+  </section>
+
+  <!-- ═══ 2 ═══ -->
+  <section id="canal">
+    <div class="num">02 · The channel</div>
+    <h2>Why the channel is already ours</h2>
+    <p class="lead">The usual risk in changing distributor is losing the surgeons. In Colombia
+      that risk runs the other way.</p>
+
+    <p>MicroAire's presence in Colombia has been built by a single person: the owner of ACT.
+      She is the salesperson, the clinical contact and the point of continuity for every
+      surgeon using PAL in this country. She also owns and runs
+      <a href="https://microairecolombia.com" target="_blank" rel="noopener">microairecolombia.com</a>,
+      which she built and pays for.</p>
+
+    <p>What changes with this proposal is not who holds those relationships. It is the structure
+      around them.</p>
+
+    <div class="tabla">
+    <table>
+      <tr><th>Dimension</th><th>ACT</th><th>A general medical supplier</th></tr>
+      <tr><td>Focus</td><td>One brand, one purpose</td><td>One line among hundreds</td></tr>
+      <tr><td>Surgeon relationships</td><td>Held by the owner, who sells</td><td>Held by a rotating salesforce</td></tr>
+      <tr><td>Clinical training</td><td>Structured programme, Bogotá base</td><td>Occasional, reactive</td></tr>
+      <tr><td>Service</td><td>Certified local station</td><td>Ship abroad, six weeks</td></tr>
+      <tr><td>Demand generation</td><td>Site, content library and an advisory line</td><td>None specific to the brand</td></tr>
+      <tr><td>Structure</td><td>Clear procedures, organised information, data management</td><td>Order flow only</td></tr>
+      <tr><td>Market knowledge</td><td>Used to structure growth, not just to react to it</td><td>None specific to the brand</td></tr>
+    </table>
+    </div>
+
+    <p>Each row is a capability MicroAire would otherwise have to build, buy, or do without.
+      ACT exists to run this brand properly rather than to stock it alongside everything else.</p>
+
+    <div class="dest verde">
+      <p><b>One thing belongs here rather than in a regulatory appendix.</b> ACT holds the team,
+        the experience and the practical knowledge of how registration works in Colombia and how
+        it is moved. We commit to keeping everything regulatory relating to MicroAire compliant
+        with local rules. That is a capability, not a claim on your property.</p>
+    </div>
+  </section>
+
+  <!-- ═══ 3 ═══ -->
+  <section id="servicio">
+    <div class="num">03 · Service</div>
+    <h2>Where the brand is losing customers: service</h2>
+    <p class="lead">Before anything we are asking for, this is the item that is costing MicroAire
+      the most in Colombia, and it is invisible from Charlottesville.</p>
+
+    <p>A PAL handpiece is a mechanical instrument and it wears. With no certified maintenance in
+      the country, a unit needing repair leaves Colombia and comes back about six weeks later.
+      That much is a logistics problem. What follows is not.</p>
+
+    <h3>What it costs a surgeon to keep the equipment</h3>
+    <div class="cifras">
+      <div class="cif"><div class="n">17.24%</div><div class="l">of the equipment value spent on maintenance every year, today</div></div>
+      <div class="cif"><div class="n">5%</div><div class="l">what a serviceable capital instrument should cost to maintain</div></div>
+      <div class="cif"><div class="n">3.4x</div><div class="l">how far above a reasonable level that sits</div></div>
+    </div>
+
+    <p>Read that as a share of what the surgeon paid for the system, because that is how he
+      reads it. Every year he spends more than a sixth of the value of the equipment just to keep
+      it working, when the figure for a properly supported capital instrument sits at 5%.</p>
+
+    <div class="dest oro">
+      <p><b>And so surgeons stop servicing it.</b> They wait five or six years instead of
+        maintaining annually. By then the accumulated maintenance is close to <b>95% of the price
+        of a new machine</b>. When a unit does fail, the emergency repair takes long enough that
+        the equipment cannot be held in regulatory compliance in the meantime.</p>
+      <p>The conclusion a Colombian surgeon reaches is not that MicroAire is expensive. It is
+        that MicroAire is <b>not viable to own</b>. That sentence is being said in this market
+        right now, and it is the single most damaging thing happening to the brand here.</p>
+    </div>
+
+    <p><b>The chain that follows is the part that costs you money.</b> Service quality falls,
+      so the equipment underperforms. The surgeon's theatre schedule gets blocked when a unit is
+      away. His operating costs rise, because a machine that is not maintained wears faster and
+      fails harder. And at the end of that chain the patient and the surgeon are both left with
+      a poor impression of MicroAire, not of the distributor. The brand absorbs the damage from
+      a problem that is entirely fixable at the service layer.</p>
+
+    <h3>What we propose to do about it</h3>
+    <p>Building our own certified station is not the fast answer. A new INVIMA authorisation for
+      a repair station takes roughly two years. So we went looking for the alternative instead.</p>
+    <p><b>ACT has done the work of finding, comparing and filtering the options, and Novatécnica
+      is the one that came out.</b> They are already authorised and already service equipment of
+      this class. The arrangement is not yet signed, and we are telling you that plainly rather
+      than presenting it as done. What we are proposing is that it becomes a direct arrangement
+      with ACT, so the relationship, the response time and the accountability sit in one place
+      instead of leaving the surgeon between two companies.</p>
+
+    <div class="cifras">
+      <div class="cif"><div class="n">6 weeks</div><div class="l">repair turnaround today, with the handpiece leaving Colombia</div></div>
+      <div class="cif"><div class="n">3 to 5 days</div><div class="l">with the arrangement in place</div></div>
+      <div class="cif"><div class="n">Zero</div><div class="l">international shipments for routine repair</div></div>
+    </div>
+
+    <div class="dest verde">
+      <p><b>What this is worth to MicroAire.</b> It removes international repair shipping from
+        your cost of serving Colombia, permanently. And it removes the reason surgeons currently
+        give for not buying the next machine, which is a revenue problem dressed as a service
+        problem.</p>
+    </div>
+
+    <h3>The wider point, said respectfully</h3>
+    <p>The current model requires every piece of equipment to travel to the United States to be
+      repaired. Inside the United States that is efficient and sensible. Outside it, it is not a
+      service model at all: it is a delay with paperwork attached. A brand of MicroAire's size
+      eventually has to decide whether its service follows its sales across borders.</p>
+    <p><b>You have already started down this road in Europe, Mexico and Brazil.</b> We are not
+      claiming to be first, and we would not want to be: it is far better for us that the model
+      already exists. What we are offering is to be <b>the first one that works end to end</b>,
+      with a service arrangement, a training calendar and a commercial plan running together
+      rather than separately. Colombia is small enough to prove it and large enough for the proof
+      to mean something.</p>
+  </section>
+
+  <!-- ═══ 4 ═══ -->
+  <section id="mercado">
+    <div class="num">04 · The market</div>
+    <h2>Why Colombia is the right country for PAL</h2>
+    <p class="lead">These are counted procedures published by the International Society of
+      Aesthetic Plastic Surgery, not a purchased market estimate. They can be verified in a
+      minute.</p>
+
+    <div class="cifras">
+      <div class="cif"><div class="n">41,280</div><div class="l">liposuction procedures performed in Colombia in 2024</div></div>
+      <div class="cif"><div class="n">26.1%</div><div class="l">of all aesthetic surgery here involves fat aspiration</div></div>
+      <div class="cif"><div class="n">321,408</div><div class="l">aesthetic surgical procedures in total</div></div>
+    </div>
+
+    <p>Liposuction alone is 12.8% of every aesthetic surgical procedure performed in the
+      country. Widen it to procedures where fat is aspirated and reused, buttock augmentation at 27,360, facial fat grafting at 14,304, and just over a quarter of Colombian aesthetic
+      surgery passes through a cannula. <b>Colombia leads Latin America in body procedures</b>,
+      and is among the countries with the highest proportion of foreign patients travelling in
+      for surgery.</p>
+
+    <h3>The competitive position</h3>
+    <p>PAL competes on two fronts here. Against other power assisted systems sold in Colombia
+      today, and against different modalities altogether, ultrasound and laser platforms.
+      Section 05 sets out who the direct competitors actually are. It is a clinical conversation with surgeons rather than a price argument, and
+      it is the conversation we are equipped to have.</p>
+
+    <div class="dest oro">
+      <p><b>A risk that argues for exclusivity.</b> Replica units are sold openly in this region.
+        A single accountable distributor with traceable
+        serial numbers and authorised service is the only practical answer, and it protects
+        pricing and clinical reputation at the same time.</p>
+    </div>
+  </section>
+
+  
+  <!-- ═══ 4b ═══ -->
+  <section id="competencia">
+    <div class="num">05 · The competitive picture</div>
+    <h2>The competitive position in Colombia today</h2>
+    <p class="lead">We are saying this plainly, so that you do not discover it from a sales
+      report two years from now.</p>
+
+    <p>PAL is not the only power assisted liposuction system a Colombian surgeon can buy, and it
+      has not been for some time. These are the manufacturers competing for the same surgeon.</p>
+
+    <div class="tabla">
+    <table>
+      <tr><th>Brand</th><th>Origin</th><th>Why it matters here</th></tr>
+      <tr><td><b>Apyx Medical</b><br>
+          <a href="https://apyxmedical.com" target="_blank" rel="noopener">apyxmedical.com</a></td>
+          <td>United States</td>
+          <td>The one to watch. Their AYON Body Contouring System bundles fat removal, electrosurgery and Renuvion tissue contraction into a single platform, and in May 2026 it received expanded FDA clearance adding power liposuction. That puts them directly alongside PAL, inside a package.</td></tr>
+      <tr><td><b>Faga Medical</b><br>
+          <a href="https://fagamed.com.br" target="_blank" rel="noopener">fagamed.com.br</a></td>
+          <td>Brazil</td>
+          <td>Regional manufacturer competing on price and on availability, which in this market often decides it.</td></tr>
+      <tr><td><b>Nouvag</b><br>
+          <a href="https://nouvag.com/en/" target="_blank" rel="noopener">nouvag.com</a></td>
+          <td>Switzerland</td>
+          <td>Established maker of surgical motor and liposuction systems, with the credibility that carries.</td></tr>
+    </table>
+    </div>
+
+    <div class="dest">
+      <p><b>Where the all-in-one trend helps us, and it is worth naming.</b> The industry is
+        moving towards single closed platforms that do everything and are priced accordingly.
+        Apyx is the clearest example: buying into AYON means buying the whole system at once,
+        at platform prices.</p>
+      <p><b>MicroAire is sold in pieces, and that is a commercial advantage rather than a gap.</b>
+        A surgeon can buy a handpiece. He can buy a console later. He can add infiltration when
+        his volume justifies it, and keep the cannulas he already trusts. We do sell the complete
+        system and we prefer to, but a surgeon who cannot commit to a full platform this year is
+        not lost to us the way he is lost to a closed system. In a market where capital is
+        expensive, being modular is the reason a deal closes at all.</p>
+    </div>
+
+    <div class="dest oro">
+      <p><b>The uncomfortable part, and it is not about the product.</b> MicroAire is losing
+        ground on the two things this document has already described: what it costs to keep the
+        equipment running, and how long it takes to get it fixed. Neither is a manufacturing
+        problem. Both sit in the layer a manufacturer delegates to its distributor, and in
+        Colombia that layer has not been worked.</p>
+      <p>No strategy has been deployed against either front. There has been no service plan, no
+        maintenance offer the surgeon can accept, no answer to the six week wait. <b>ACT has
+        repeatedly proposed and pushed to address exactly these fronts, and has not been given
+        the room to execute them.</b> We are not raising this to assign blame. We are raising it
+        because the gap is not a mystery to be solved: the work has been identified, offered and
+        left undone, and the fix requires a distributor who is allowed to do it.</p>
+    </div>
+
+    <h3>Where the brand actually stands</h3>
+    <p>We will not soften this. In Colombia the reputation of the brand has fallen, and it has
+      fallen for reasons that are fixable rather than fundamental. Surgeons who own the equipment
+      talk to surgeons who are considering it, and what they pass on is the maintenance bill and
+      the six week wait. Every one of the four requests in this proposal exists to reverse a
+      specific part of that.</p>
+
+    <div class="dest">
+      <p><b>And there is an argument for doing it properly here.</b> If a market where the brand
+        has slipped can be turned around with a service arrangement, structured training and real
+        commercial support, that is worth more than a market that was never in trouble. Recovery
+        is the harder proof, and it is the one that transfers. Colombia can be the case study
+        instead of the cautionary tale.</p>
+    </div>
+  </section>
+
+<!-- ═══ 5 ═══ -->
+  <section id="ano">
+    <div class="num">06 · This year</div>
+    <h2>Why this year was flat, and what it tells us</h2>
+    <p class="lead">This needs explaining precisely rather than left to sit. It was
+      not price, and it was not the exchange rate.</p>
+
+    <p>The Colombian peso <b>appreciated</b> sharply. The representative market rate moved from
+      COP 4,040.85 in July 2025 to COP 3,361.62 in July 2026, a fall in the dollar of about 17%.
+      In peso terms your equipment became cheaper here, not more expensive.</p>
+
+    <p><b>The surgeon did not experience it that way, and that is the part that matters.</b>
+      He watched the dollar weaken all year and saw no movement in what he was asked to pay.
+      ACT has wanted to move prices with the rate for some time and has not been able to: the
+      list has stayed where it was. From where the surgeon sits, that reads as a brand taking
+      the currency gain and keeping it, at exactly the moment he was deciding whether to invest.</p>
+
+    <p>Two things changed, and neither was price.</p>
+
+    <p><b>Money became expensive.</b> Banco de la República raised its policy rate from 9.25% at
+      the start of 2026 to <b>12.00%</b> in June, a rise of 275 basis points in a single year, and
+      held it there on 5 August. Annual inflation stood at 5.8% in May.</p>
+
+    <p><b>And the country spent the year waiting.</b> The presidential contest was not settled
+      until the run off of 21 June, and it was decided by <b>under one point</b>, 49.66% against
+      48.70%, a margin of roughly 250,800 votes. The new government took office on <b>7 August 2026</b>. Through almost the entire commercial year, capital sat still. In a market where a
+      large share of aesthetic patients come from abroad and their money stays in offshore
+      accounts until the picture is clear, that is not background noise. It is the difference
+      between a surgeon committing to a console this quarter or waiting to see who won.</p>
+
+    <h3>What we are doing about it, which is better than cutting the price</h3>
+    <p>Dropping prices to chase the rate would be the obvious move and the wrong one. It is
+      hard to undo, it trains the market to wait for the next drop, and it hands margin away
+      permanently in exchange for a currency swing that will reverse. So we are answering it
+      through the commercial plan instead.</p>
+    <p><b>We package.</b> The price stays where it is, and what the surgeon receives for it
+      grows. A cannula has a working life of roughly 20 procedures, and in practice surgeons run them
+      well past that. Not because replacements are slow, they arrive quickly, but because they
+      are expensive, and a cannula that still cuts is hard to justify replacing. So the package
+      includes a set of cannulas of his own choosing, together with items that are bought rarely
+      and therefore never rotate.</p>
+    <div class="dest verde">
+      <p><b>This does three things at once, and only one of them is for the surgeon.</b> It
+        protects both of us from exchange rate volatility without ever touching the list price.
+        It moves inventory that currently sits still, which improves rotation on your side and
+        ours. And it raises the real average ticket per surgeon rather than discounting it, so
+        the relationship gets deeper instead of cheaper. The exact composition of each package
+        is still being defined.</p>
+    </div>
+
+    <div class="dest">
+      <p><b>So the constraint was never price.</b> The equipment became more affordable in pesos
+        while the cost of money rose and the country held its breath. Commercial terms are what
+        let a distributor keep selling through a year like that, and MicroAire does not currently
+        offer them. That is why the request for 180 day terms is not a concession we are seeking.
+        It is the mechanism that keeps the channel moving when conditions do what they did this
+        year.</p>
+    </div>
+  </section>
+
+  <!-- ═══ 6 ═══ -->
+  <section id="pedidos">
+    <div class="num">07 · The requests</div>
+    <h2>The four requests</h2>
+    <p class="lead">Each is tied to a mechanism rather than to goodwill, and each has a stated
+      effect on the number in section 08.</p>
+
+    <div class="pasos">
+      <div class="paso"><div><div class="t">A certified service station in Colombia</div>
+        <div class="d">Repairs in three to five days rather than six weeks. Removes the most
+          frequently cited reason surgeons decline to renew, and removes international repair
+          shipping from your costs.</div></div></div>
+      <div class="paso"><div><div class="t">Payment terms of 180 days</div>
+        <div class="d">This is the request that unlocks the others, and it is not about ACT's
+          cash flow. It is about the surgeon's.
+          <br><br>
+          The policy rate in Colombia moved from 9.25% to 12.00% inside a single year. At that
+          cost of money a surgeon does not decline the equipment, he defers it, and a deferral is
+          indistinguishable from a lost sale until it is too late to do anything about it. The
+          answer the market actually responds to is credit at the point of decision.
+          <br><br>
+          <b>ACT can extend that credit. It cannot extend terms it has not been given.</b> The
+          180 days are what let ACT carry the surgeon, and carrying the surgeon is what opens the
+          segment that is not buying today. We know this is a longer term than usual, and we are
+          not asking for it lightly.</div></div></div>
+      <div class="paso"><div><div class="t">A structured training programme</div>
+        <div class="d">Based in Bogotá, with local and international faculty, plus sponsored
+          sessions at universities with plastic surgery specialisations. One-to-one access
+          converts better than congress footfall and it seeds the next generation of users.
+          Concretely, what we are asking for is slots on the courses you already run, a speaker
+          where you can place one, and support in putting demonstration units in front of
+          surgeons who have never held the handpiece.</div></div></div>
+      <div class="paso"><div><div class="t">Speakers at the congresses you already attend</div>
+        <div class="d">At SAPS and TDABS MicroAire funds the stand, and ACT mounts it, brands
+          it and staffs it. That part works and we are not asking to change it. What is missing
+          is speakers. Both meetings draw surgeons from Central
+          America, the United States, Europe and Asia, so a surgeon presenting PAL from that
+          platform reaches far beyond Colombia, and that is worth more to the brand than it is to
+          us. We are asking MicroAire to fund speakers at the congresses where ACT is present.</div></div></div>
+    </div>
+  </section>
+
+  <!-- ═══ 7 ═══ -->
+  <section id="numero">
+    <div class="num">08 · The commitment</div>
+    <h2>What we commit to, and what your support unlocks</h2>
+    <p class="lead">We commit to a number ACT can deliver alone, and show separately what
+      your participation adds. A single figure that quietly depends on you would tell you
+      less.</p>
+
+    <div class="tabla">
+    <table>
+      <tr><th>Scenario</th><th>Year one</th><th>How it is derived</th></tr>
+      <tr><td><b>Floor, committed</b></td><td class="n">USD 526,000</td>
+          <td>What ACT delivers with no service arrangement and no commercial terms. Equal to last year.</td></tr>
+      <tr><td><b>With the four requests</b></td><td class="n">USD 604,900</td>
+          <td>The floor plus 15% in year one, then 13%, then 8% for years three to five.</td></tr>
+    </table>
+    </div>
+
+    <p>Across a five year agreement, holding the floor flat and growing the supported path on the schedule above, the two paths diverge as follows. We have expressed everything in dollars,
+      since that is how the territory is measured on your side.</p>
+
+    <div class="tabla">
+    <table>
+      <tr><th>Path</th><th>Year 1</th><th>Year 5</th><th>Five-year total</th></tr>
+      <tr><td>Without support</td><td>USD 526,000</td><td>USD 526,000</td><td class="n">USD 2,630,000</td></tr>
+      <tr><td>With the four requests</td><td>USD 604,900</td><td>USD 861,060</td><td class="n">USD 3,684,994</td></tr>
+      <tr class="tot"><td colspan="3">Difference, the value of MicroAire's participation</td>
+          <td class="n" style="color:var(--verde)">USD 1,054,994</td></tr>
+    </table>
+    </div>
+
+    <h3>What the commitment actually covers</h3>
+    <p>The commitment is not a single line from your price list. It is the whole mix of complete
+      systems, handpieces, cannulas and consumables that ACT buys across a year. We have
+      expressed it in dollars precisely because that mix moves from year to year, and because
+      dollars are how this territory is measured on your side.</p>
+
+    <div class="dest verde">
+    <div class="dest oro">
+      <p><b>These numbers are deliberately conservative, and we are saying so rather than let you
+        assume otherwise.</b> We could have shown you 15% compounding across five years. It would
+        have produced a much larger figure, and we do not put a number in front of a partner that
+        we are not prepared to be held to. <b>This is the number we will sign.</b></p>
+      <p>The floor matching last year is the same decision. It is what ACT delivers with nothing
+        from your side, and a number that survives a bad quarter is worth more to both of us than
+        one that needs everything to go right.</p>
+      <p><b>We should also say what we are actually going for.</b> If the four requests land the
+        way we expect, the later years do not decelerate to 8%: they hold nearer 12% and 10%, and
+        the five year difference becomes approximately <b>USD 1.19M</b> rather than USD 1.05M. We
+        are not asking you to plan on that figure. We are telling you it is the one we work to, so
+        that you read the committed number as a floor we intend to beat and not as the limit of
+        our ambition. Our intention is to be the distributor who beat a disciplined plan, not the
+        one who explained an ambitious one.</p>
+    </div>
+
+      <p><b>Every figure above comes from the floor and a growth schedule, and nothing else.</b>
+        Year one is the floor plus 15%. Year two adds 13%. Years three, four and five add 8% each.
+        We deliberately do not hold 15% across five years: a channel that has just been rebuilt
+        grows fastest while the backlog clears and then settles, and a projection that ignores
+        that is a projection nobody should sign. There is no third assumption hidden anywhere in
+        the table, so you can move any year and watch the whole thing move with it.</p>
+    </div>
+  </section>
+
+  <!-- ═══ 8 ═══ -->
+  <section id="unidades">
+    <div class="num">09 · The plan</div>
+    <h2>How the growth actually gets sold</h2>
+    <p class="lead">Five mechanisms. Each names who it targets and who pays for it.</p>
+
+    <h3>The market we are addressing</h3>
+    <p>The Sociedad Colombiana de Cirugía Plástica publishes a directory of certified plastic
+      surgeons; our count of it stands at approximately <b>950</b>. Of those, <b>350 already use
+      MicroAire</b>, which is our installed base. Of the remaining 600, around 20% work primarily
+      in facial and reconstructive surgery and are not candidates for PAL. That leaves an
+      addressable target of <b>480 surgeons</b>.</p>
+
+    <div class="tabla">
+    <table>
+      <tr><th>Mechanism</th><th>Who it targets</th><th>Who pays</th></tr>
+      <tr><td><b>Console replacement</b><br><span style="color:var(--gris);font-size:13px">proposed, not yet running</span></td>
+          <td>Surgeons who already own MicroAire equipment</td>
+          <td>Trade in economics, shared</td></tr>
+      <tr><td><b>Newly financeable buyers</b></td><td>Younger and smaller practices within the 480</td>
+          <td>Enabled by the 180-day terms</td></tr>
+      <tr><td><b>University programme</b></td><td>Residents in plastic surgery specialisations</td>
+          <td>ACT, with sponsorship</td></tr>
+      <tr><td><b>Congresses</b></td><td>SAPS and TDABS reach Central America, the US, Europe and Asia; the national congress reaches Colombia</td>
+          <td>Stand funded by MicroAire, built by ACT</td></tr>
+      <tr><td><b>Sales coverage</b></td><td>Barranquilla, Bucaramanga, Medellín, Bogotá, Cali</td>
+          <td>ACT</td></tr>
+    </table>
+    </div>
+
+    <p>We should be straightforward about sequencing: the university programme will not sell a
+      system this year. It is there because the surgeons who buy in 2030 are in a lecture
+      theatre in 2027, and because nobody else is talking to them about MicroAire.</p>
+
+    <h3>Why the year one target is conservative rather than modest</h3>
+    <p>It matters that <b>none of these mechanisms exists today</b>. Everything sold in
+      Colombia this year came from direct selling alone. There is no replacement programme, no
+      university programme, no financing offer.</p>
+    <p>Take the replacement programme as the clearest example. Against an installed base of
+      <b>350 surgeons</b>, ACT commits to running a formal renewal campaign: reaching the
+      surgeons who already own MicroAire equipment and making the case for upgrading. It is
+      deliberately built on a small share of that base rather than on what the base could
+      theoretically absorb. We commit to what we can hold, not to what looks better in a
+      slide.</p>
+    <div class="dest">
+      <p><b>That is the posture across this whole document.</b> Commit modestly and deliver
+        above it, instead of committing high and explaining the gap. The first builds a
+        relationship. The second ends one.</p>
+    </div>
+  </section>
+
+  
+  <!-- ═══ 2027 ═══ -->
+  <section id="lanzamiento">
+    <div class="num">10 · 2027</div>
+    <h2>SYNERGY and what 2027 requires</h2>
+    <p class="lead">Everything in this proposal points at one thing: 2027 is the consolidation of
+      <b>SYNERGY</b>, and consolidation does not happen quietly.</p>
+
+    <p>A system is not sold by having it in a catalogue. It is sold by surgeons seeing it
+      used, by other surgeons they respect talking about it, and by enough repetition that it
+      stops being the new thing and becomes the obvious thing. That is what the requests in
+      section 07 are for, and it is why the timing matters more than usual.</p>
+
+    <div class="tabla">
+    <table>
+      <tr><th>Lever</th><th>What it does for SYNERGY</th></tr>
+      <tr><td><b>Training</b></td><td>Hands on sessions in Bogotá and at university faculties, so the first contact with SYNERGY is a surgeon using it rather than reading about it.</td></tr>
+      <tr><td><b>Congresses</b></td><td>SAPS and TDABS put SYNERGY in front of an international audience. The national congress puts it in front of Colombia.</td></tr>
+      <tr><td><b>Speakers</b></td><td>A respected surgeon presenting SYNERGY does more in twenty minutes than a year of our brochures.</td></tr>
+      <tr><td><b>Marketing</b></td><td>Deliberately aggressive, and not only digital. Sustained campaigns on Instagram and direct email to the surgeon base, and alongside them the part that happens in person: a branded high impact stand, sponsorship of the SCCP national congress and the body contouring symposia, live demonstrations, and the relationships that make a surgeon walk over to the stand in the first place.</td></tr>
+      <tr><td><b>Service</b></td><td>None of the above survives contact with a six week repair. The service arrangement is what makes the rest credible.</td></tr>
+    </table>
+    </div>
+
+    <div class="dest">
+      <p>We are asking for the support now because a launch year cannot be rescued halfway
+        through. The congress calendar, the training schedule and the campaign all have to be
+        committed before the season starts, not after the first quarter shows what happened.</p>
+    </div>
+  </section>
+
+<!-- ═══ 9 ═══ -->
+  <section id="campo">
+    <div class="num">11 · Track record</div>
+    <h2>What we have already built</h2>
+    <p class="lead">None of this proposal describes a standing start. The work is under way and
+      ACT is paying for it.</p>
+
+    <ul class="lista">
+      <li><b>microairecolombia.com</b>, the home the brand has in this market, built and
+        maintained by ACT: product pages, clinical evidence, video library and a service
+        section.</li>
+      <li><b>A direct advisory line</b> answered within one to two hours by a person, not a
+        contact form.</li>
+      <li><b>A congress presence</b> designed, branded, built and staffed by ACT at SAPS and
+        TDABS, the two largest international meetings held in Colombia, and at the national
+        congress of the Sociedad Colombiana de Cirugía Plástica. The stand, the materials and
+        the people on it have been ours.</li>
+      <li><b>Years of carrying the relationship.</b> Sales, support and customer service for this
+        brand in Colombia have run through ACT, and the trust that exists between MicroAire and
+        Colombian surgeons was built one conversation at a time, by us. That is the asset that
+        does not appear on any invoice.</li>
     </ul>
-  </section>
 
-  <!-- 02 -->
-  <section id="situacion">
-    <div class="eti">02 · The situation</div>
-    <h2>Why this is being asked now</h2>
-    <p>Three things happened in Colombia at once, and only one of them is about MicroAire.</p>
-    <ul class="lst">
-      <li><b>The cost of money rose sharply.</b> The policy rate moved from 9.25% to 12.00% inside
-        a single year and held there. At that level a surgeon does not decline the equipment, he
-        defers it, and a deferral is indistinguishable from a lost sale until too late.</li>
-      <li><b>The peso appreciated,</b> which made the equipment roughly 17% cheaper in local terms
-        and should have helped. It did not, because the constraint was never the price.</li>
-      <li><b>Service remained unresolved.</b> With no certified station in the country, an
-        out-of-service handpiece is an idle theatre, and the cost of that attaches to the brand
-        rather than to the distributor.</li>
-    </ul>
-    <div class="caja azul">
-      <h4>The problem stated in one line</h4>
-      <p>The binding constraint on MicroAire's Colombian revenue is not demand, price, or the
-        exchange rate. It is <b>financing at the point of decision and service after the sale</b>.
-        Neither is a manufacturing problem, and neither can be solved by the distributor alone.</p>
+    <div class="anexos izq">
+      <a href="https://microairecolombia.com" target="_blank" rel="noopener">See microairecolombia.com
+        <span class="n">BUILT AND RUN BY ACT</span></a>
+    </div>
+
+    <div class="dest">
+      <p>All of it was built to make it easier for a Colombian surgeon to choose MicroAire, and
+        all of it was built before anyone asked us to. What the four requests change is the
+        scale at which it runs, not whether it happens.</p>
     </div>
   </section>
 
-  <!-- 03 -->
-  <section id="evidencia">
-    <div class="eti">03 · The evidence</div>
-    <h2>The channel already grew 48% without any of this</h2>
-    <p>Before any projection, one fact from MicroAire's own order book.</p>
+  <!-- ═══ 10 ═══ -->
+  <section id="portafolio">
+    <div class="num">12 · Portfolio</div>
+    <h2>One distributor for the whole portfolio</h2>
+    <p class="lead">PAL is the business today. Being able to carry the rest of the MicroAire
+      portfolio is what makes ACT an integral distributor rather than a single-line reseller.</p>
 
-    <div class="kpis">
-      <div class="kpi"><div class="n">+48%</div><div class="l">purchases, 2024 to 2025</div></div>
-      <div class="kpi"><div class="n">13 → 22</div><div class="l">consoles placed</div></div>
-      <div class="kpi"><div class="n">21 → 31</div><div class="l">handpieces</div></div>
-      <div class="kpi"><div class="n">64 → 87</div><div class="l">cables</div></div>
-    </div>
+    <p><b>PAL, selling now.</b> Power assisted lipoplasty and the cannula family. We are asking
+      for the representation to be transferred to ACT, and we commit to keeping everything
+      regulatory relating to MicroAire compliant with local rules.</p>
 
-    <div class="caja">
-      <h4>Why this figure comes first</h4>
-      <p>That growth happened with <b>no certified service station, no credit line, no training
-        programme and no congress support</b>. It is the closest thing available to a controlled
-        result: it shows what the channel does unaided. What changed afterwards was not the
-        channel.</p>
-    </div>
+    <p><b>What we bring is everything around the product.</b> The home the brand has in this
+      country, built and paid for by us. The surgeon relationships, which run through one person
+      and have for years. A service arrangement identified, compared and ready to be signed. A
+      training programme with faculty and university access. A congress presence we design,
+      brand, build and staff. A commercial plan that answers the exchange rate without
+      discounting your product. And a national sales structure that puts a person in front of
+      the surgeon in the five cities where the work is actually done.</p>
 
-    <p>It also makes the commitment checkable rather than aspirational. ACT commits to a floor of
-      <b>USD 526,000</b>. Actual 2025 purchases were <b>USD 522,500</b>. The
-      two are <b>0.7% apart</b>: the commitment is the number already delivered, and MicroAire can
-      verify it without taking anyone's word for it.</p>
-  </section>
-
-  <!-- 04 -->
-  <section id="opciones">
-    <div class="eti">04 · Options considered</div>
-    <h2>Three courses of action, priced</h2>
-    <p>A case that presents only its own preferred option is not a case. These are the three
-      available to MicroAire, with the same model applied to each.</p>
-
-    <div class="tbl">
-    <table>
-      <tr><th>Option</th><th>What it means</th><th>NPV to MicroAire</th><th>Verdict</th></tr>
-      <tr><td><b>A · Continue as is</b></td>
-          <td class="libre">No exclusivity, no support. Revenue holds at the floor and the service
-            and financing constraints remain in place.</td>
-          <td>0</td><td class="libre">Baseline. Not neutral: the constraint persists.</td></tr>
-      <tr><td><b>B · Exclusivity alone</b></td>
-          <td class="libre">Recognise ACT as sole distributor but grant none of the four requests.
-            Structure improves; the binding constraint does not move.</td>
-          <td class="neg">-43,306</td>
-          <td class="libre">Modelled at half the growth rate. Negative.</td></tr>
-      <tr class="elegida"><td><b>C · Exclusivity with the four requests</b></td>
-          <td class="libre">The proposal as written. Service, terms, training and congress support,
-            against a committed floor.</td>
-          <td class="pos">183,104</td>
-          <td class="libre">Recommended.</td></tr>
-    </table>
-    </div>
-
-    <div class="caja azul">
-      <h4>Why option B is the interesting one</h4>
-      <p>Granting exclusivity while withholding the support is the middle path, and it is the one
-        that looks safest from a distance. The model says it is the worst of the three: it incurs
-        the transition while leaving untouched the two things actually suppressing revenue. If
-        MicroAire is not prepared to fund the four requests, <b>option A is a more coherent
-        decision than option B</b>.</p>
+    <div class="dest">
+      <p><b>Why this matters to MicroAire and not only to us.</b> Plenty of surgeons specialise,
+        and a body surgeon is not automatically a facial one. But the ones who do both are exactly
+        the accounts worth having, and today they are asked to deal with two suppliers for one
+        brand. One distributor covering the whole MicroAire portfolio means one relationship, one
+        training calendar, one service channel and one forecast. For the surgeons who only do
+        body, nothing changes, and nothing in this proposal makes PAL wait for anything else.</p>
     </div>
   </section>
 
-  <!-- 05 -->
-  <section id="modelo">
-    <div class="eti">05 · The model</div>
-    <h2>MicroAire's cash flow, year by year</h2>
-    <p>The investment is what the four requests cost MicroAire. The return is the incremental
-      gross profit MicroAire collects on purchases above the floor. ACT's own economics are not
-      part of this calculation and do not belong in it.</p>
-
-    <div class="tbl">
-    <table>
-      <tr><th>Year</th><th>Supported purchases</th><th>Above floor</th>
-          <th>Gross profit <span class="sup">60%</span></th>
-          <th>Cost of support</th><th>Net to MicroAire</th></tr>
-      <tr><td>Year 1</td><td>604,900</td><td>78,900</td><td>47,340</td><td>(56,910)</td><td class="neg">-9,570</td></tr>
-<tr><td>Year 2</td><td>683,537</td><td>157,537</td><td>94,522</td><td>(58,978)</td><td class="pos">35,544</td></tr>
-<tr><td>Year 3</td><td>738,220</td><td>212,220</td><td>127,332</td><td>(60,416)</td><td class="pos">66,916</td></tr>
-<tr><td>Year 4</td><td>797,278</td><td>271,278</td><td>162,767</td><td>(61,969)</td><td class="pos">100,797</td></tr>
-<tr><td>Year 5</td><td>861,060</td><td>335,060</td><td>201,036</td><td>(63,647)</td><td class="pos">137,389</td></tr>
-<tr class="tot"><td>Five-year total</td><td></td><td>1,054,994</td><td>632,997</td><td>(301,920)</td><td>331,076</td></tr>
-    </table>
-    </div>
-    <p class="gris chico">Year 0 carries the one-off outlay of USD 42,000 to
-      certify the service station. The floor of USD 526,000 is held flat across all five
-      years, so every dollar in the “above floor” column is incremental.</p>
-
-    <div class="caja rojo">
-      <h4>Year one is negative, and we are showing it</h4>
-      <p>Net to MicroAire in year one is <b>(9,570)</b>. A programme that has
-        just been switched on does not run at capacity, and we would rather you see that here than
-        discover it in a quarterly review. It turns positive in year two and does not look back.</p>
-    </div>
-  </section>
-
-  <!-- 06 -->
-  <section id="indicadores">
-    <div class="eti">06 · Appraisal indicators</div>
-    <h2>Standard appraisal, standard answers</h2>
-    <div class="kpis">
-      <div class="kpi"><div class="n">183,104</div><div class="l">NPV at 10%, USD</div></div>
-      <div class="kpi"><div class="n">70.0%</div><div class="l">IRR</div></div>
-      <div class="kpi"><div class="n">2.2 yr</div><div class="l">payback period</div></div>
-      <div class="kpi"><div class="n">1.68</div><div class="l">benefit / cost ratio</div></div>
-      <div class="kpi"><div class="n">5.4×</div><div class="l">profitability index on the outlay</div></div>
-    </div>
-    <p>A benefit-cost ratio of <b>1.68</b> means every dollar MicroAire commits returns
-      <b>1.68</b> in discounted gross profit. The IRR is high for the ordinary reason that
-      the outlay is small relative to the revenue it moves: this is a commercial arrangement, not a
-      capital project.</p>
-  </section>
-
-  <!-- 07 -->
-  <section id="equilibrio">
-    <div class="eti">07 · Break-even</div>
-    <h2>What has to be true for this to pay for itself</h2>
-    <p>This is the number we would check first if we were on your side of the table.</p>
-    <div class="caja">
-      <h4>The support pays for itself here</h4>
-      <p>The four requests cost an average of <b>USD 60,384</b> a year. At a
-        60% gross margin they are repaid by <b>USD 100,640</b> of
-        additional annual purchases.</p>
-      <p>Against a floor of USD 526,000 that is an increase of
-        <b>19%</b>. The proposal forecasts 15% in year one alone, and the
-        channel delivered 48% between 2024 and 2025 with none of this support
-        in place.</p>
-    </div>
-    <p class="gris chico">Expressed in equipment rather than dollars, the same threshold is roughly
-      <b>4 additional console placements a year</b>, against the
-      22 recorded in 2025.</p>
-  </section>
-
-  <!-- 08 -->
-  <section id="act">
-    <div class="eti">08 · What ACT puts in</div>
-    <h2>Why MicroAire's outlay is this small</h2>
-    <p>Everything above measures what MicroAire spends. It is a small number, and it is small for
-      a reason: most of the cost of selling PAL in Colombia is already carried by ACT and will
-      continue to be.</p>
-
-    <div class="kpis">
-      <div class="kpi az"><div class="n">198,871</div><div class="l">receivable ACT funds to extend credit to surgeons, USD</div></div>
-      <div class="kpi az"><div class="n">29,831</div><div class="l">annual cost of carrying it at 15%</div></div>
-      <div class="kpi az"><div class="n">19,887</div><div class="l">exposure to a 10% adverse currency move, borne by ACT</div></div>
-    </div>
-
-    <div class="caja azul">
-      <h4>The comparison that matters</h4>
-      <p>On the credit line alone ACT commits about <b>USD 49,718</b> a year against
-        MicroAire's <b>USD 60,384</b>. For every dollar MicroAire puts
-        into this arrangement, <b>ACT puts in 0.82</b>
-        before anything else is counted.</p>
-    </div>
-
-    <p>The credit line is the part that can be measured. The rest is already built and already
-      paid for:</p>
-    <ul class="lst">
-      <li><b>The commercial infrastructure.</b> Sales teams in five cities, the brand's site in
-        this market, the content library, and an advisory line answered by a person.</li>
-      <li><b>The congress presence.</b> ACT designs, brands, builds and staffs the stand at the
-        national congress and at the two largest international meetings held in Colombia.</li>
-      <li><b>The service partner.</b> Identified, compared and prepared ahead of any commitment
-        from MicroAire.</li>
-      <li><b>The currency risk.</b> Invoiced in USD, collected in COP across the credit period.
-        That gap sits entirely on ACT's balance sheet, at a reference rate of 3,361.62.</li>
-      <li><b>The floor itself.</b> ACT commits to USD 526,000 whether or not the four
-        requests are granted. The commitment is not conditional on the support.</li>
-    </ul>
-  </section>
-
-  <!-- 09 -->
-  <section id="base">
-    <div class="eti">09 · The installed base</div>
-    <h2>A console is not a sale, it is an annuity</h2>
-    <p>The reason supporting placement is rational rather than generous is that the console is the
-      entry point and the consumables follow it for years. MicroAire's 2025 figures show the
-      pattern directly: 22 consoles pulled
-      87 cables and 31 handpieces behind them
-      in the same year.</p>
-    <div class="kpis">
-      <div class="kpi"><div class="n">23,750</div><div class="l">purchases per console placed, 2025, USD</div></div>
-      <div class="kpi"><div class="n">94,315</div><div class="l">lifetime purchases per console <span class="sup">5 yr</span></div></div>
-      <div class="kpi"><div class="n">56,589</div><div class="l">lifetime gross profit per console, USD</div></div>
-    </div>
-    <p>On those figures a single additional console placement returns
-      <b>USD 56,589</b> of gross profit across its life, which is why the
-      break-even in the previous section is as low as it is. It is also the argument against
-      competing on entry price: the money is in the base, not in the box.</p>
-  </section>
-
-  <!-- 09 -->
-  <section id="otros">
-    <div class="eti">10 · Benefits beyond the financial</div>
-    <h2>What the model does not capture</h2>
-    <p>The figures above count only incremental gross profit. These are real and were deliberately
-      left out, which makes every number in this document a floor rather than a forecast.</p>
-    <div class="tbl">
-    <table>
-      <tr><th>Category</th><th>Benefit to MicroAire</th><th>In the model?</th></tr>
-      <tr><td><b>Operational</b></td><td class="libre">International repair shipping leaves MicroAire's cost of serving this market permanently once a local station exists.</td><td>No</td></tr>
-      <tr><td><b>Commercial</b></td><td class="libre">A single accountable distributor: one forecast, one training calendar, one service channel, one point of contact.</td><td>No</td></tr>
-      <tr><td><b>Market</b></td><td class="libre">Defends share against closed all-in-one platforms and against regional competitors winning on service turnaround.</td><td>No</td></tr>
-      <tr><td><b>Customer</b></td><td class="libre">Repair turnaround falls from six weeks to three to five days, removing the most cited reason surgeons decline to renew.</td><td>No</td></tr>
-      <tr><td><b>Brand</b></td><td class="libre">Reputational recovery in a market where surgeons discuss maintenance costs and downtime with each other.</td><td>No</td></tr>
-      <tr><td><b>Pipeline</b></td><td class="libre">University programme reaches residents who specify equipment a decade from now. No revenue attributed inside five years.</td><td>No</td></tr>
-    </table>
-    </div>
-  </section>
-
-  <!-- 10 -->
-  <section id="sensibilidad">
-    <div class="eti">11 · Sensitivity</div>
-    <h2>How the case holds under other assumptions</h2>
-    <p>Every assumption here is one that can reasonably be challenged. These are the answers when
-      it is.</p>
-    <div class="tbl">
-    <table>
-      <tr><th>Scenario</th><th>NPV, USD</th><th>IRR</th></tr>
-      <tr><td>Growth at half the assumed rate</td><td class="neg">-43,306</td><td class="neg">-9.2%</td></tr>
-<tr><td>Base case as modelled</td><td class="pos">183,104</td><td class="pos">70.0%</td></tr>
-<tr><td>Growth 25% lower than assumed</td><td class="pos">69,899</td><td class="pos">35.3%</td></tr>
-<tr><td>Gross margin 50% rather than 60%</td><td class="pos">107,634</td><td class="pos">47.5%</td></tr>
-<tr><td>Gross margin 70% rather than 60%</td><td class="pos">258,574</td><td class="pos">91.2%</td></tr>
-    </table>
-    </div>
-    <div class="caja">
-      <h4>The assumption that carries the most weight, solved backwards</h4>
-      <p>The 60% gross margin is our estimate and we cannot verify it. So
-        rather than defend it, we solved for the point where it stops working.</p>
-      <p><b>This case is positive at any MicroAire gross margin above
-        35.7%.</b> If your true figure is above that, the conclusion holds
-        whatever else you adjust. If it is below, tell us and we will withdraw the model rather
-        than argue with it.</p>
-    </div>
-
-    <div class="caja rojo">
-      <h4>The case that fails, stated plainly</h4>
-      <p><b>At half the assumed growth the NPV is negative.</b> That row is not hidden, because it
-        is the honest boundary of this proposal and it says something useful: the four requests are
-        not a subsidy that pays off regardless. They pay off if the channel grows at roughly half
-        the rate it grew in 2025 or better. That is the condition, and it is the one worth arguing
-        about.</p>
-    </div>
-  </section>
-
-  <!-- 11 -->
-  <section id="riesgos">
-    <div class="eti">12 · Risks and mitigations</div>
-    <h2>What could go wrong, and what absorbs it</h2>
-    <div class="tbl">
-    <table>
-      <tr><th>Risk</th><th>Effect</th><th>Mitigation</th></tr>
-      <tr><td><b>Rates stay high longer</b></td><td class="libre">Deferral persists and growth lands below plan.</td><td class="libre">The 180-day terms are precisely the hedge: ACT carries the surgeon regardless of the policy rate.</td></tr>
-      <tr><td><b>Peso reverses</b></td><td class="libre">Equipment becomes more expensive in local terms.</td><td class="libre">The commercial answer is packaging rather than discounting, so list price is never surrendered.</td></tr>
-      <tr><td><b>Service centre delayed</b></td><td class="libre">Turnaround stays at six weeks through 2027.</td><td class="libre">Partner identified and compared; the one-off cost is confirmed, not estimated. Milestone is visible in section 12.</td></tr>
-      <tr><td><b>Transition friction</b></td><td class="libre">Notice and handover consume the first months.</td><td class="libre">Not ACT's to resolve. It is on the list of four questions put back to MicroAire in the proposal.</td></tr>
-      <tr><td><b>ACT execution capacity</b></td><td class="libre">Growth outruns the team.</td><td class="libre">Sales teams already operate in five cities; the floor is committed with no new hiring assumed.</td></tr>
-      <tr><td><b>Assumptions wrong</b></td><td class="libre">Modelled return does not materialise.</td><td class="libre">Every assumption is listed in section 14 with its basis, and the model is supplied so MicroAire can rerun it on its own numbers.</td></tr>
-    </table>
-    </div>
-  </section>
-
-  <!-- 12 -->
-  <section id="calendario">
-    <div class="eti">13 · Implementation</div>
-    <h2>What happens, and when</h2>
-    <div class="tbl" style="padding:6px 22px">
-      <div class="hito"><div class="c">On decision</div><div><div class="t">Recognition and start date</div><div class="d">Exclusivity confirmed and dated. Everything below hangs from this date rather than from the calendar year.</div></div></div>
-      <div class="hito"><div class="c">+30 days</div><div><div class="t">Terms in force</div><div class="d">180-day terms operative, so ACT can quote credit to surgeons in the same quarter rather than the next.</div></div></div>
-      <div class="hito"><div class="c">+90 days</div><div><div class="t">Training calendar published</div><div class="d">Bogotá programme scheduled with faculty confirmed, ahead of the congress season rather than after it.</div></div></div>
-      <div class="hito"><div class="c">Q1 2027</div><div><div class="t">Service centre operational</div><div class="d">Local certified station live with the identified partner. Repair turnaround moves to three to five days.</div></div></div>
-      <div class="hito"><div class="c">2027</div><div><div class="t">SYNERGY consolidation</div><div class="d">The year the platform is established in the market, with training, congresses and speakers pointed at it.</div></div></div>
-    </div>
-  </section>
-
-  <!-- 13 -->
-  <section id="gobierno">
-    <div class="eti">14 · Reporting and governance</div>
-    <h2>How MicroAire sees whether this is working</h2>
-    <p>A commitment without visibility is a promise. ACT proposes to report quarterly, on figures
-      MicroAire can reconcile against its own order records.</p>
-    <ul class="lst">
-      <li><b>Purchases against the committed floor,</b> cumulative and by quarter.</li>
-      <li><b>Installed base movement:</b> placements, renewals, and the consumable revenue trailing them.</li>
-      <li><b>Service performance:</b> repair turnaround times, once the station is live.</li>
-      <li><b>Pipeline:</b> training sessions delivered, congress activity, and surgeons reached.</li>
-      <li><b>Territory intelligence:</b> competitor movements and pricing observed in the field.</li>
-    </ul>
-    <div class="caja">
-      <h4>The point of reporting it this way</h4>
-      <p>Every metric above is one MicroAire can verify independently. If ACT is wrong about this
-        market, the reporting shows it early and cheaply, while the total exposure is still the
-        annual support cost of roughly USD 60,384.</p>
-    </div>
-  </section>
-
-  <!-- 15 -->
-  <section id="plazo">
-    <div class="eti">15 · Term and performance</div>
-    <h2>How long, and what happens if ACT misses</h2>
-    <p>The model runs five years, so ACT is asking for a <b>five-year exclusive agreement</b> for
-      the PAL line in Colombia. A shorter term does not work: the service station, the training
-      calendar and the university programme all pay back beyond year two, and no distributor
-      finances a five-year build on a one-year agreement.</p>
-
-    <p>The obvious question is what happens if ACT does not deliver. Rather than wait to be asked,
-      ACT proposes the condition itself.</p>
-
-    <div class="caja">
-      <h4>Proposed performance condition</h4>
-      <p>Exclusivity reviewable at the end of any contract year in which ACT's purchases fall
-        below <b>90% of the committed floor</b>, measured against MicroAire's own order records
-        and reported quarterly.</p>
-      <p>ACT is comfortable proposing that because it was modelled: at 90% of the floor the
-        arrangement still returns <b>USD 18,185</b> of net present value to MicroAire. The
-        condition protects MicroAire without putting the agreement on a hair trigger.</p>
-    </div>
-
-    <p class="gris chico">ACT asks one reciprocal condition: that any review consider whether the
-      four requests were in place and operating during the year in question. A floor missed
-      because the service station never opened is a different fact from a floor missed because
-      ACT did not sell.</p>
-  </section>
-
-  <!-- 16 -->
-  <section id="supuestos">
-    <div class="eti">16 · Assumptions</div>
-    <h2>Everything we had to assume, with its basis</h2>
-    <p>ACT does not have MicroAire's internal cost structure. Every figure below is our estimate
-      and every one can be replaced. If any is materially wrong, tell us which and we will rerun
-      the model rather than defend the output.</p>
-    <div class="tbl">
-    <table>
-      <tr><th>Assumption</th><th>Value used</th><th>Basis</th></tr>
-      <tr><td>MicroAire gross margin on OUS list price</td><td>60%</td><td class="libre gris">Industry norm for surgical devices. Replace with your actual figure.</td></tr>
-<tr><td>Discount rate applied to the cash flows</td><td>10%</td><td class="libre gris">Conventional corporate hurdle rate. Raise it and the case still clears.</td></tr>
-<tr><td>Additional days of payment terms requested</td><td>120 days</td><td class="libre gris">The additional days requested in the proposal.</td></tr>
-<tr><td>Cost of capital applied to working capital</td><td>8%</td><td class="libre gris">Applied to the receivable those additional days create.</td></tr>
-<tr><td>Certifying the service station, one-off</td><td>USD 42,000</td><td class="libre gris">Confirmed with ACT against the local partner quotation.</td></tr>
-<tr><td>Sustaining the service station, per year</td><td>USD 6,000</td><td class="libre gris">Recurring technical support and recertification.</td></tr>
-<tr><td>Training programme: course slots and faculty, per year</td><td>USD 15,000</td><td class="libre gris">Faculty time and course places, not cash transfers.</td></tr>
-<tr><td>Speakers and course slots at congresses, per year</td><td>USD 20,000</td><td class="libre gris">Speaker travel and course slots at meetings ACT already staffs.</td></tr>
-<tr><td>Years a console keeps generating consumable revenue</td><td>5 years</td><td class="libre gris">Deliberately short. A longer life raises every figure above.</td></tr>
-    </table>
-    </div>
-    <div class="caja azul">
-      <h4>What is fact and what is estimate</h4>
-      <p><b>Fact:</b> the 2024 and 2025 purchase totals, the unit counts, and the component list
-        prices. All are MicroAire's own records.<br>
-        <b>Estimate:</b> every MicroAire internal cost in the table above, and the gross margin.
-        Nothing else in this document is invented.</p>
-    </div>
-  </section>
-
-  <!-- 15 -->
+  <!-- ═══ 11 ═══ -->
   <section id="decision">
-    <div class="eti">17 · The decision requested</div>
-    <h2>What we are asking MicroAire to approve</h2>
-    <p>Option C: recognise ACT as sole distributor for the PAL line in Colombia, and fund the four
-      requests, against a committed floor of USD 526,000 and quarterly reporting.</p>
-    <div class="caja">
-      <h4>The exposure, in one sentence</h4>
-      <p>MicroAire's total downside is the one-off USD 42,000 plus roughly
-        USD 60,384 a year, visible quarterly and reversible at any renewal point. The
-        modelled upside is USD 183,104 of net present value and
-        USD 1,054,994 of incremental purchases across five years.</p>
+    <div class="num">13 · The decision</div>
+    <h2>What we are asking you to decide</h2>
+    <p class="lead">Not whether ACT can sell MicroAire in Colombia. It already does. Five
+      decisions, each of which can be made in this meeting.</p>
+
+    <div class="pasos">
+      <div class="paso"><div><div class="t">Recognise ACT as the sole distributor in Colombia</div>
+        <div class="d">This is the decision the other four depend on. A service arrangement, a
+          training calendar and a commercial plan cannot be built by a distributor who is one of
+          several.</div></div></div>
+      <div class="paso"><div><div class="t">Confirm the four support items</div>
+        <div class="d">Service station, 180-day terms, training programme, congress support.</div></div></div>
+      <div class="paso"><div><div class="t">Agree the floor and the target</div>
+        <div class="d">USD 526,000 committed as the floor. USD 604,900 in year one with the four requests in place, growing 15%, then 13%, then 8% a year.</div></div></div>
+      <div class="paso"><div><div class="t">Recognise ACT across the portfolio</div>
+        <div class="d">PAL now, and the rest of the MicroAire portfolio as each line becomes available in Colombia.</div></div></div>
+      <div class="paso"><div><div class="t">Set a date to begin</div>
+        <div class="d">Dated from that recognition, so the service arrangement and the training
+          calendar can be built around the next congress season rather than after it.</div></div></div>
     </div>
-    <p>We are not asking MicroAire to take a risk on an unknown partner in an unfamiliar market.
-      We are asking it to fund four specific things in a channel that grew
-      48% without them.</p>
+
+    <div class="dest">
+      <p><b>And four things we need from you, because they are not ours to answer.</b></p>
+      <p>What the current arrangement requires in terms of notice and transition, and who on your
+        side handles that. What you would need to see from us in order to consider the terms we are asking for. Who inside MicroAire owns service outside the United States, and who would
+        certify a station here. And when SYNERGY reaches this region, with what support attached.</p>
+      <p>We are not asking you to answer these today. We are asking for them to be on the list,
+        because the date we set only means something once they are.</p>
+    </div>
+
+    <p style="margin-top:24px">We are not asking MicroAire to take a risk on an unknown partner
+      in an unfamiliar market. We are asking it to put structure behind a channel that has
+      already been built, and to let that channel grow at the rate the market allows.</p>
+  </section>
+
+
+  <!-- ═══ 14 · el cierre ═══ -->
+  <section id="porque">
+    <div class="num">14 · The close</div>
+    <h2>Why the representation should sit with ACT</h2>
+    <p class="lead">Everything above argues for a plan. This argues for the company that would
+      run it. If the representation moves, it should move to an organisation that is already
+      built, and this is what is already built.</p>
+
+    <p><b>ACT is a structured company, not a person with a portfolio.</b> There is a general
+      management, a commercial and sales division, an administrative and financial division, and
+      a regulatory and quality unit. Each of them has people in it today. None of it has to be
+      hired in order for this proposal to begin.</p>
+
+    <div class="tabla">
+    <table>
+      <tr><th>What ACT already has</th><th>What it means for MicroAire</th></tr>
+      <tr><td><b>National sales structure</b></td>
+          <td>Teams in Bogotá, Medellín, Cali, Barranquilla and Bucaramanga. A person in front of the surgeon, in the five cities where the procedures are actually done.</td></tr>
+      <tr><td><b>Finance and credit</b></td>
+          <td>Portfolio management and credit assessment run in house. It is what makes direct financing to surgeons a real offer rather than an intention.</td></tr>
+      <tr><td><b>Logistics and imports</b></td>
+          <td>Nationalisation, warehousing and inventory control, including demonstration kits and consumables.</td></tr>
+      <tr><td><b>Regulatory and quality</b></td>
+          <td>An internal unit that deals with INVIMA directly: registrations, additions of references, and transfers of title.</td></tr>
+      <tr><td><b>Service</b></td>
+          <td>A local authorised maintenance centre prepared with Novatécnica, so that a repair stops being a six week export.</td></tr>
+      <tr><td><b>Medical education</b></td>
+          <td>Workshops and live demonstrations with opinion leaders, plus webinars and a digital library. It is how a technique spreads from one surgeon to the next.</td></tr>
+    </table>
+    </div>
+
+    <div class="dest oro">
+      <p><b>The question in front of you is not whether Colombia is worth the effort.</b> The
+        procedures are here, the surgeons are here, and the brand already has a reputation in
+        this market that is worth protecting. The question is who carries it. Carrying it takes a
+        sales structure, a finance function that can extend credit, an import operation, a
+        regulatory unit and an answer on service. ACT has all five of those today.</p>
+      <p><b>And the relationships are already here.</b> That is the part that cannot be hired,
+        bought or transferred. It was built one surgeon at a time, over years, and it is the
+        reason this proposal formalises a channel instead of opening one.</p>
+    </div>
+
+    <p>Two annexes sit alongside this document. The first sets out the company: the full structure,
+      the regional teams, the regulatory unit, and the service and education plans. The second prices
+      this proposal from MicroAire's side, with the model, the options considered and every assumption
+      behind them. Alongside both, the site ACT built for the brand in this market is open to be
+      looked at.</p>
+
+    <!-- Las rutas salen de la carpeta: el business case vive en «Business case»,
+         que es hermana de «Dossier». El %20 es el espacio del nombre de la
+         carpeta codificado. Funciona, pero es fragil: si algun dia esto se
+         publica, conviene renombrar la carpeta a business-case sin espacio. -->
+    <div class="anexos">
+      <a class="solido" href="../Business%20case/index.html">The business case <span class="n">NPV · IRR · break-even</span></a>
+      <a href="act.html">ACT in detail <span class="n">STRUCTURE · TEAMS · SERVICE</span></a>
+      <a href="../Business%20case/ACT-MicroAire-Business-Case.pdf" download>Business case as PDF <span class="n">8 PAGES</span></a>
+      <a href="https://microairecolombia.com" target="_blank" rel="noopener">microairecolombia.com
+        <span class="n">THE BRAND'S HOME IN COLOMBIA</span></a>
+    </div>
   </section>
 
   <footer>
-    <p><b>Sources.</b> Purchase history 2024 and 2025: MicroAire order records, provided to ACT.
-      Component pricing: MicroAire PAL Synergy Sales Kits list, 14 April 2026, OUS list price.
-      Every figure in this model is computed in USD; no Colombian peso price enters the
-      calculation, so no VAT treatment applies to it. Policy rate and exchange rate:
-      Banco de la República, to 5 August 2026.</p>
-    <p style="margin-top:12px"><b>ACT Soluciones Médicas SAS</b> · Bogotá, Colombia ·
+    <div class="fuentes">
+      <h5>Sources</h5>
+      <ol>
+        <li>ISAPS, <i>International Survey on Aesthetic/Cosmetic Procedures performed in 2024</i>,
+          Colombia country page. Procedure volumes and the aspiration subtotal.
+          <a href="https://www.isaps.org/media/razfvmsk/isaps-global-survey-2024.pdf">isaps.org</a></li>
+        <li>Banco de la República, Board of Directors monetary policy decisions, 2026, and the
+          representative market rate series used for the peso figures.
+          <a href="https://www.banrep.gov.co/en/news/board-directors-march-2026">banrep.gov.co</a></li>
+        <li>Sociedad Colombiana de Cirugía Plástica, surgeon directory, for the certified
+          surgeon count used in the target market.
+          <a href="https://cirugiaplastica.org.co/buscar-cirujano/">cirugiaplastica.org.co</a></li>
+        <li>MicroAire Surgical Instruments, PAL product literature and the SYNERGY sales kit
+          price list, for equipment and handpiece pricing.
+          <a href="https://www.microaire.com/">microaire.com</a></li>
+        <li>Clinical figures and the supporting study as published by ACT at
+          <a href="https://microairecolombia.com">microairecolombia.com</a></li>
+        <li>Competing systems referenced in section 05:
+          <a href="https://apyxmedical.com">Apyx Medical</a>, including the AYON Body Contouring
+          System and its May 2026 FDA clearance for power liposuction,
+          <a href="https://fagamed.com.br">Faga Medical</a>,
+          <a href="https://nouvag.com/en/">Nouvag</a>.</li>
+      </ol>
+      <p class="nota">Every figure in this document is either published, and cited above, or
+        calculated from figures that are. The workbook behind it is available on request and
+        shows each calculation in full.</p>
+    </div>
+    <p class="firma"><b>ACT Soluciones Médicas SAS</b> · Bogotá, Colombia<br>
       microairecolombia.com · WhatsApp +57 321 421 2435 · +57 305 373 5556</p>
   </footer>
 
