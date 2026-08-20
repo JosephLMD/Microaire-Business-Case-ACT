@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ACT Soluciones Médicas · The company · Annex to the MicroAire Colombia proposal</title>
+<meta name="description" content="Company profile of ACT Soluciones Médicas SAS: structure, national sales coverage, finance, regulatory, logistics, service and medical education.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ACT Soluciones Médicas · MicroAire Colombia · distribution proposal.
+   Serif for running text: it reads better at length and carries more weight
+   than a sans in a document meant to be printed and re-read. */
+:root{
+  --tinta:#101820; --papel:#FFFFFF; --gris:#5B6672; --linea:#E4E8EC;
+  --azul:#0072CE; --azul-d:#00538F; --azul-l:#EFF6FD;
+  --oro:#B0821A; --verde:#1B6B47;
+  --sombra:0 1px 2px rgba(16,24,32,.04), 0 10px 30px rgba(16,24,32,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:66px}
+body{font-family:'Source Serif 4',Georgia,serif;color:var(--tinta);background:var(--papel);
+  line-height:1.68;font-size:18px;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+.sans{font-family:'Inter',system-ui,sans-serif}
+
+/* ── barra ── */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+.bar{max-width:760px;margin:0 auto;padding:12px 24px;display:flex;align-items:baseline;gap:10px;
+  font-family:'Inter',sans-serif}
+.bar b{font-size:14px;letter-spacing:-.2px}
+.bar span{font-size:12px;color:var(--gris)}
+.bar .r{margin-left:auto;font-size:11.5px;color:var(--gris);letter-spacing:.3px}
+@media(max-width:600px){.bar .r{display:none}}
+
+/* ── portada ── */
+.port{padding:56px 0 10px}
+/* La palabra MicroAire va sola y pequena. Identifica a quien va dirigido el
+   documento, no a quien lo escribe. Sin fotos: el argumento es numerico y una
+   imagen de equipo solo competiria con el. */
+.marca{display:block;width:132px;height:auto;margin-bottom:26px;opacity:.92}
+.port .k{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:2.4px;
+  text-transform:uppercase;color:var(--azul-d);margin-bottom:20px}
+.port h1{font-size:clamp(34px,6vw,52px);line-height:1.08;letter-spacing:-1.4px;
+  font-weight:700;margin-bottom:22px}
+.port .sub{font-size:20px;color:#3D4753;line-height:1.55;margin-bottom:26px}
+.port .meta{font-family:'Inter',sans-serif;font-size:13px;color:var(--gris);line-height:1.7;
+  border-top:1px solid var(--linea);padding-top:18px}
+
+/* ── texto ── */
+section{padding:44px 0 0;scroll-margin-top:66px}
+h2{font-size:clamp(25px,3.6vw,32px);line-height:1.2;letter-spacing:-.7px;font-weight:700;
+  margin-bottom:14px}
+h3{font-size:20px;font-weight:700;letter-spacing:-.3px;margin:30px 0 10px}
+p{margin-bottom:16px}
+.lead{font-size:20px;color:#39424E;line-height:1.6;margin-bottom:20px}
+.num{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--azul-d);margin-bottom:10px}
+b,strong{font-weight:700}
+a{color:var(--azul-d)}
+
+/* ── índice ── */
+.idx{background:#FAFBFC;border:1px solid var(--linea);border-radius:14px;padding:24px 26px;
+  margin:34px 0 6px}
+.idx h4{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:1.8px;
+  text-transform:uppercase;color:var(--gris);margin-bottom:14px}
+.idx ol{list-style:none;counter-reset:i;font-family:'Inter',sans-serif;font-size:14.5px}
+.idx li{counter-increment:i;margin-bottom:9px;padding-left:32px;position:relative;line-height:1.45}
+.idx li::before{content:counter(i,decimal-leading-zero);position:absolute;left:0;top:1px;
+  font-size:12px;font-weight:700;color:var(--azul)}
+.idx a{text-decoration:none;color:var(--tinta)}
+.idx a:hover{color:var(--azul-d)}
+
+/* ── cifras ── */
+.cifras{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+  background:var(--linea);border:1px solid var(--linea);border-radius:12px;overflow:hidden;
+  margin:24px 0}
+.cif{background:#fff;padding:20px 18px}
+.cif .n{font-family:'Inter',sans-serif;font-size:30px;font-weight:700;letter-spacing:-1.2px;
+  line-height:1;color:var(--azul-d)}
+.cif .l{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--gris);margin-top:8px;
+  line-height:1.4}
+
+/* ── destacado ── */
+.dest{border-left:3px solid var(--azul);background:var(--azul-l);border-radius:0 12px 12px 0;
+  padding:20px 24px;margin:26px 0}
+.dest p:last-child{margin-bottom:0}
+.dest.oro{border-left-color:var(--oro);background:#FDF8EC}
+.dest.verde{border-left-color:var(--verde);background:#F0F7F3}
+
+/* ── tablas ── */
+.tabla{overflow-x:auto;margin:24px 0}
+table{width:100%;border-collapse:collapse;font-family:'Inter',sans-serif;font-size:14px;
+  min-width:480px}
+th{text-align:left;padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.8px;
+  text-transform:uppercase;color:var(--gris);border-bottom:1.5px solid var(--tinta)}
+td{padding:11px 14px;border-bottom:1px solid var(--linea);vertical-align:top;line-height:1.45}
+tr:last-child td{border-bottom:0}
+td.n{font-weight:700;white-space:nowrap}
+.tot td{border-top:1.5px solid var(--tinta);border-bottom:0;font-weight:700}
+
+/* ── listas ── */
+ul.lista{list-style:none;margin:0 0 18px}
+ul.lista li{padding-left:22px;position:relative;margin-bottom:11px;line-height:1.6}
+ul.lista li::before{content:'';position:absolute;left:2px;top:11px;width:6px;height:6px;
+  border-radius:50%;background:var(--azul)}
+
+/* ── pasos ── */
+.pasos{counter-reset:p;margin:24px 0}
+.paso{counter-increment:p;display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--linea)}
+.paso:last-child{border-bottom:0}
+.paso::before{content:counter(p,decimal-leading-zero);font-family:'Inter',sans-serif;
+  font-size:13px;font-weight:700;color:var(--azul);flex:0 0 28px;padding-top:3px}
+.paso .t{font-weight:700;margin-bottom:3px}
+.paso .d{font-size:16px;color:var(--gris);line-height:1.5}
+
+/* ── por confirmar ── */
+.pc{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.6px;
+  color:#8A6510;background:#FBF0D8;border-radius:4px;padding:1px 7px;white-space:nowrap}
+
+.fuentes{border-top:1px solid var(--linea);padding-top:22px;margin-bottom:26px}
+.fuentes h5{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--azul-d);margin-bottom:12px}
+.fuentes ol{margin:0 0 14px 18px;padding:0}
+.fuentes li{font-size:13.5px;line-height:1.6;color:var(--gris);margin-bottom:8px}
+.fuentes a{color:var(--azul-d);text-decoration:none;border-bottom:1px solid var(--azul-l)}
+.fuentes a:hover{border-bottom-color:var(--azul)}
+.fuentes .nota{font-size:13px;color:var(--gris);font-style:italic}
+.firma{font-size:13.5px;color:var(--gris);line-height:1.7}
+footer{border-top:1px solid var(--linea);margin-top:56px;padding:26px 0 60px;
+  font-family:'Inter',sans-serif;font-size:13px;color:var(--gris);line-height:1.7}
+@media print{header{position:static}section{page-break-inside:avoid}}
+</style>
+
+<style>
+/* ═══ LA CASA DE ACT ══════════════════════════════════════════════════════
+   El dossier es el documento de MicroAire: azul de MicroAire, wordmark de
+   MicroAire arriba. Esta pagina es de ACT, y tiene que notarse al primer
+   golpe de vista, no despues de leer el titulo.
+
+   Como esta hecho: el dossier define toda su paleta en variables CSS, asi que
+   aqui no se copia ni una sola regla de maqueta. Se reescriben las variables
+   y la estructura entera cambia de color sola. Si manana se toca un margen en
+   el dossier, esta pagina lo hereda igual que antes.
+
+   Los colores salen del logo que subiste, con una correccion: el verde
+   azulado del logo (#3E8C98) sobre papel crema da 3,76 de contraste, que no
+   alcanza para texto corrido segun WCAG AA. Para titulares y enlaces se usa
+   #337781, que es el mismo color un punto mas oscuro y ya da 4,97. */
+:root{
+  --papel:#FAF6EF;        /* el crema del logo, un poco mas cargado.
+                             #FDFBF9, que es el valor literal del archivo del
+                             logo, en pantalla se lee como blanco: se paga la
+                             idea sin recibirla. Este es el tono mas profundo
+                             con el gris de texto en 5,10 y el verde azulado
+                             en 4,76, los dos por encima del 4,5 de AA y con
+                             mas holgura que el tono siguiente.
+                             De paso, las tarjetas blancas por fin se despegan
+                             del papel y se leen como tarjetas. */
+  --tinta:#0F253D;        /* el navy del wordmark ACT */
+  --gris:#5E6B72;
+  --linea:#E9E2D6;        /* filete calido; sobre el crema mas cargado hay que
+                             ajustarlo o desaparece */
+  --azul:#3E8C98;         /* el verde azulado del logo, para acentos */
+  --azul-d:#337781;       /* version que si pasa AA para texto */
+  --azul-l:#EAF3F2;
+  --verde:#2A626B;
+  --oro:#9A7B2E;
+}
+body{background:var(--papel)}
+
+/* ── la banda de arriba, en navy con el logo en blanco ── */
+header{background:var(--tinta);border-bottom:0;backdrop-filter:none}
+header .bar{align-items:center;padding:11px 24px;gap:12px}
+header .bar span{color:#93A8B9;font-size:12px}
+header .bar .r{color:#7B90A2}
+.marcabar{width:28px;height:28px;display:block;flex:0 0 auto}
+.marcabar-txt{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:700;
+  color:#fff;letter-spacing:-.2px}
+
+/* ── portada ── */
+.marca-act{display:block;width:212px;height:auto;margin:0 0 24px}
+.port{padding:46px 0 10px}
+
+/* ── los recuadros, recalibrados sobre crema ── */
+.dest{background:var(--azul-l);border-left-color:var(--azul)}
+.dest.verde{background:#EDF4F3;border-left-color:#2A626B}
+.dest.oro{background:#FBF5E8;border-left-color:#9A7B2E}
+th{border-bottom-color:var(--tinta)}
+td{border-bottom-color:var(--linea)}
+
+/* ── organigrama ─────────────────────────────────────────────────────────
+   Se dibuja con cajas y bordes, no con una imagen: asi se lee en el telefono,
+   se puede copiar el texto, y no hay un PNG que se vea borroso al proyectar. */
+.org{margin:30px 0 6px}
+.org .nivel{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.org .caja{font-family:'Inter',sans-serif;border:1.5px solid var(--tinta);border-radius:10px;
+  padding:13px 16px;text-align:center;background:#fff;min-width:170px;flex:1;max-width:230px}
+.org .caja .t{font-size:13px;font-weight:700;line-height:1.3;letter-spacing:-.1px}
+.org .caja .s{font-size:11.5px;color:var(--gris);margin-top:3px;line-height:1.4}
+.org .tope{max-width:300px;margin:0 auto;border-width:2px;background:var(--azul-l);
+  border-color:var(--azul-d)}
+.org .tope .t{color:var(--azul-d);font-size:14px}
+.org .baston{width:1.5px;height:22px;background:var(--linea);margin:0 auto}
+.org .ramas{height:22px;border-top:1.5px solid var(--linea);margin:0 34px;
+  border-left:1.5px solid var(--linea);border-right:1.5px solid var(--linea);
+  border-radius:8px 8px 0 0}
+.org .hijos{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--gris);
+  margin-top:9px;line-height:1.75;text-align:left;padding-left:2px}
+.org .hijos span{display:block}
+.org .hijos span::before{content:'· ';color:var(--azul)}
+@media(max-width:640px){
+  .org .nivel{flex-direction:column;align-items:stretch}
+  .org .caja{max-width:none}
+  .org .ramas{display:none}
+}
+.volver{font-family:'Inter',sans-serif;font-size:13.5px;margin:0 0 4px}
+.volver a{text-decoration:none;border-bottom:1px solid var(--azul-l)}
+.ciudades{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:1px;
+  background:var(--linea);border:1px solid var(--linea);border-radius:12px;overflow:hidden;
+  margin:22px 0}
+.ciudad{background:#fff;padding:16px 15px;font-family:'Inter',sans-serif}
+.ciudad .c{font-size:15px;font-weight:700;letter-spacing:-.2px}
+.ciudad .d{font-size:12px;color:var(--gris);margin-top:4px;line-height:1.45}
+.ciudad .c{color:var(--tinta)}
+
+/* Estas cuatro van al final a proposito. Las reglas de arriba ya definen
+   .org .tope, y con igual especificidad gana la ultima que se declara: puestas
+   antes, el navy no se aplicaba nunca. La cupula del organigrama en navy solido
+   es lo que hace que se lea como cupula y no como una caja mas. */
+.org .tope{background:var(--tinta);border-color:var(--tinta)}
+.org .tope .t{color:#fff}
+.org .tope .s{color:#9DB3C4}
+</style>
+
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <img class="marcabar" src="act-logo-blanco.png" alt="" width="660" height="660">
+    <span class="marcabar-txt">ACT Soluciones Médicas</span>
+    <span class="r">Annex to the MicroAire distribution proposal · August 2026</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="port">
+    <img class="marca-act" src="act-logo.png" alt="ACT Soluciones Médicas SAS" width="1024" height="1024">
+    <div class="k">Company profile · Annex</div>
+    <h1>The company behind<br>the proposal.</h1>
+    <p class="sub">The distribution proposal argues for a plan. This page is about the
+      organisation that would run it: how ACT is structured, who is in it, and which of the
+      capabilities in that proposal already exist rather than being promised.</p>
+    <div class="meta">
+      <b>ACT Soluciones Médicas SAS</b> · Bogotá, Colombia<br>
+      Prepared for MicroAire Surgical Instruments · A Marmon | Berkshire Hathaway Company
+    </div>
+  </div>
+
+  <p class="volver"><a href="index.html">← Back to the distribution proposal</a></p>
+
+  <!-- ═══ 1 ═══ -->
+  <section>
+    <div class="num">01 · Structure</div>
+    <h2>How ACT is organised</h2>
+    <p class="lead">A general management, three divisions, and a national sales structure
+      underneath the commercial one. Every box below has people in it today.</p>
+
+    <div class="org">
+      <div class="nivel">
+        <div class="caja tope">
+          <div class="t">DIRECCIÓN GENERAL</div>
+          <div class="s">ACT Soluciones Médicas SAS</div>
+        </div>
+      </div>
+      <div class="baston"></div>
+      <div class="ramas"></div>
+      <div class="nivel">
+        <div class="caja">
+          <div class="t">Dirección Comercial y Ventas</div>
+          <div class="s">Commercial and sales</div>
+          <div class="hijos">
+            <span>Equipo Bogotá</span>
+            <span>Equipo Medellín</span>
+            <span>Equipo Cali</span>
+            <span>Equipo Barranquilla</span>
+            <span>Equipo Bucaramanga</span>
+          </div>
+        </div>
+        <div class="caja">
+          <div class="t">Dirección Administrativa y Financiera</div>
+          <div class="s">Administration and finance</div>
+          <div class="hijos">
+            <span>Contabilidad y finanzas</span>
+            <span>Logística e importaciones</span>
+            <span>Gestión humana</span>
+          </div>
+        </div>
+        <div class="caja">
+          <div class="t">Asuntos Regulatorios y Calidad</div>
+          <div class="s">Regulatory and quality</div>
+          <div class="hijos">
+            <span>Gestión INVIMA</span>
+            <span>Licencias e importaciones</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p>The reason this matters to a manufacturer is narrow and practical. A distributor without
+      a finance function cannot extend credit to a surgeon. A distributor without an import
+      operation cannot hold demonstration stock. A distributor without a regulatory unit waits
+      on a third party for every change to a registration. ACT does not outsource any of the
+      three.</p>
+  </section>
+
+  <!-- ═══ 2 ═══ -->
+  <section>
+    <div class="num">02 · Coverage</div>
+    <h2>Five cities, in person</h2>
+    <p class="lead">Colombian plastic surgery is not concentrated in one city, and a surgeon in
+      Barranquilla does not buy a system from someone who visits twice a year.</p>
+
+    <div class="ciudades">
+      <div class="ciudad"><div class="c">Bogotá</div><div class="d">Head office, training base and the largest concentration of the specialty</div></div>
+      <div class="ciudad"><div class="c">Medellín</div><div class="d">Second market for body contouring and a strong private clinic sector</div></div>
+      <div class="ciudad"><div class="c">Cali</div><div class="d">Established aesthetic surgery centre with significant international patient flow</div></div>
+      <div class="ciudad"><div class="c">Barranquilla</div><div class="d">Coastal hub, and the access point for the north of the country</div></div>
+      <div class="ciudad"><div class="c">Bucaramanga</div><div class="d">Growing specialty base and a teaching presence</div></div>
+    </div>
+
+    <p>Each team makes face to face contact with the surgeons in its region. That is what turns a
+      demonstration into a sale, and it is the difference between a brand that is available in
+      Colombia and a brand that is present in it.</p>
+  </section>
+
+  <!-- ═══ 3 ═══ -->
+  <section>
+    <div class="num">03 · Finance</div>
+    <h2>Credit, and why it is a commercial weapon</h2>
+    <p class="lead">The barrier in this market is not desire for the equipment. It is the cost of
+      capital in front of the surgeon.</p>
+
+    <p>Rates in Colombia have moved against the buyer, and surgeons have become reluctant to
+      commit cash to a purchase of this size. A distributor who can only offer the manufacturer's
+      terms is limited to the surgeons who can pay immediately, and that is a small and shrinking
+      group.</p>
+
+    <p><b>ACT runs its own credit assessment and portfolio management.</b> That makes structured
+      financing and direct credit to the surgeon a real offer rather than an intention, and it
+      widens the addressable market to practices that would otherwise never reach a decision.</p>
+
+    <div class="dest">
+      <p>This is also what makes the payment terms requested in the proposal work. Terms from
+        MicroAire to ACT are what allow terms from ACT to the surgeon. The chain only holds if
+        both ends of it exist.</p>
+    </div>
+  </section>
+
+  <!-- ═══ 4 ═══ -->
+  <section>
+    <div class="num">04 · Regulatory</div>
+    <h2>An internal regulatory unit</h2>
+    <p class="lead">Registration work is where distribution quietly stalls, and it stalls fastest
+      when it is handled by somebody else's licence.</p>
+
+    <p>ACT has its own regulatory and quality unit dealing with INVIMA directly: obtaining
+      registrations, adding references to an existing one, and handling transfers of title. It
+      also holds the practical knowledge of how the process is actually moved through, which is
+      not the same thing as knowing the rules.</p>
+
+    <p><b>ACT commits to keeping everything regulatory relating to MicroAire compliant with local
+      rules.</b> That is offered as a capability ACT brings, not as a claim on anything that
+      belongs to MicroAire.</p>
+  </section>
+
+  <!-- ═══ 5 ═══ -->
+  <section>
+    <div class="num">05 · Logistics</div>
+    <h2>Imports, warehousing and demonstration stock</h2>
+    <p class="lead">Nationalisation, bonded handling, warehousing and inventory control, run in
+      house.</p>
+
+    <p>This covers complete systems, handpieces and the consumable lines, and it covers the
+      demonstration kits that make a sale possible in the first place. A surgeon decides on a
+      system after using it, which means somebody has to own, insure, move and maintain the
+      equipment he uses to decide. That sits with ACT.</p>
+  </section>
+
+  <!-- ═══ 6 ═══ -->
+  <section>
+    <div class="num">06 · Service</div>
+    <h2>A local authorised centre</h2>
+    <p class="lead">The single largest source of friction in this market today is what happens
+      after something breaks.</p>
+
+    <p>ACT is preparing a local authorised maintenance centre in alliance with <b>Novatécnica</b>,
+      with operations projected to begin in <b>Q1 2027</b>. The point is to replace a reactive
+      model, where a failure becomes a six week export and an unpredictable bill, with a
+      standardised one: preventive maintenance under factory protocols and a repair turnaround
+      measured in days.</p>
+
+    <div class="dest verde">
+      <p><b>This protects MicroAire's brand equity more than it protects ACT's margin.</b> A
+        surgeon whose equipment is out of service for six weeks does not blame the distributor.
+        He blames the brand, out loud, to the colleagues who were considering it.</p>
+    </div>
+  </section>
+
+  <!-- ═══ 7 ═══ -->
+  <section>
+    <div class="num">07 · Education</div>
+    <h2>How the technique spreads</h2>
+    <p class="lead">Power assisted lipoplasty is not sold by specification. It is adopted by
+      surgeons who have seen it used by a surgeon they respect.</p>
+
+    <ul class="lista">
+      <li><b>Workshops and hands on training.</b> Intensive courses and live demonstrations in
+        theatre with opinion leaders, so that first contact with the system is a surgeon using
+        it rather than reading about it.</li>
+      <li><b>Webinars and a digital library.</b> Virtual sessions on high definition sculpting
+        technique and on the use of the specialised cannula family, available after the fact
+        rather than only live.</li>
+      <li><b>University and faculty access.</b> Sessions at schools with plastic surgery
+        programmes, aimed at residents. It sells nothing this year, and it is how the base
+        looks in a decade.</li>
+    </ul>
+  </section>
+
+  <!-- ═══ 8 ═══ -->
+  <section>
+    <div class="num">08 · Marketing</div>
+    <h2>Brand presence, and the part that is not digital</h2>
+    <p class="lead">Marketing in this specialty is a stand, a demonstration and a conversation
+      as much as it is a campaign.</p>
+
+    <ul class="lista">
+      <li><b>Congresses.</b> A branded, high impact stand at the national congress of the
+        Sociedad Colombiana de Cirugía Plástica and at the body contouring symposia, plus SAPS
+        and TDABS, the two largest international meetings held in Colombia. ACT designs, builds,
+        brands and staffs it.</li>
+      <li><b>Sponsorship and speakers.</b> Active sponsorship of the meetings that matter, and
+        respected surgeons presenting the technology to their peers.</li>
+      <li><b>Sustained digital.</b> Continuous campaigns on Instagram and direct email to the
+        surgeon base, run as a programme rather than as occasional posts.</li>
+      <li><b>The relationships underneath all of it.</b> The reason a surgeon walks over to the
+        stand is that he already knows the person standing at it.</li>
+    </ul>
+  </section>
+
+  <!-- ═══ 9 ═══ -->
+  <section>
+    <div class="num">09 · The point</div>
+    <h2>Why this page exists</h2>
+    <div class="dest oro">
+      <p><b>The proposal asks MicroAire to move the representation in Colombia to ACT.</b> That
+        is a reasonable thing to hesitate over, and the honest answer to the hesitation is not a
+        promise. It is a structure that already exists.</p>
+      <p>Sales teams in five cities. A finance function that can extend credit. An import and
+        warehousing operation. A regulatory unit that deals with INVIMA directly. A service
+        answer with a partner and a date. An education programme with faculty access. And the
+        surgeon relationships, which are the one item on this list that could not have been
+        bought or hired.</p>
+    </div>
+
+    <p class="volver" style="margin-top:26px"><a href="index.html">← Back to the distribution proposal</a></p>
+  </section>
+
+  <footer>
+    <p class="firma"><b>ACT Soluciones Médicas SAS</b> · Bogotá, Colombia<br>
+      microairecolombia.com · WhatsApp +57 321 421 2435 · +57 305 373 5556</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
